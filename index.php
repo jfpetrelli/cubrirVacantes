@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
             <div class="col-5 border bg-light m-2">
                 <div class="p-3 ">
-                    <img src="./img/img1.jpg" alt="" srcset="" class = "img-fluid">
+                    <img src="./img/img1.jpg" alt="" srcset="" class = "mx-auto d-block img-fluid">
     
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere libero consequuntur deserunt quam nostrum eius inventore voluptatem corrupti nesciunt illo officiis, voluptates aspernatur soluta necessitatibus earum sit, quae commodi praesentium!
                     Libero similique odio molestias, modi quia soluta impedit culpa quam quae exercitationem nesciunt pariatur quidem quaerat obcaecati amet magnam repellendus, deserunt ab, fugit ipsa vero eveniet! Ut quisquam accusantium nemo?
@@ -13,7 +13,7 @@
             </div>
             <div class="col-5 border bg-light m-2">
                 <div class="p-3 ">
-                    <img src="./img/img2.jpg" alt="" srcset="" class = "img-fluid">
+                    <img src="./img/img2.jpg" alt="" srcset="" class = "mx-auto d-block img-fluid">
     
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere libero consequuntur deserunt quam nostrum eius inventore voluptatem corrupti nesciunt illo officiis, voluptates aspernatur soluta necessitatibus earum sit, quae commodi praesentium!
                     Libero similique odio molestias, modi quia soluta impedit culpa quam quae exercitationem nesciunt pariatur quidem quaerat obcaecati amet magnam repellendus, deserunt ab, fugit ipsa vero eveniet! Ut quisquam accusantium nemo?
@@ -25,7 +25,7 @@
     <div class="row justify-content-center">
             <div class="col-5 border bg-light m-2">
                 <div class="p-3 text-center">
-                    <img src="./img/img3.jpg" alt="" srcset="" class = "img-center">
+                    <img src="./img/img3.jpg" alt="" srcset="" class = "mx-auto d-block img-fluid">
     
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere libero consequuntur deserunt quam nostrum eius inventore voluptatem corrupti nesciunt illo officiis, voluptates aspernatur soluta necessitatibus earum sit, quae commodi praesentium!
                     Libero similique odio molestias, modi quia soluta impedit culpa quam quae exercitationem nesciunt pariatur quidem quaerat obcaecati amet magnam repellendus, deserunt ab, fugit ipsa vero eveniet! Ut quisquam accusantium nemo?
@@ -34,7 +34,7 @@
             </div>
             <div class="col-5 border bg-light m-2">
                 <div class="p-3 text-center">
-                    <img src="./img/img5.jpg" alt="" srcset="" class = "img-fluid">
+                    <img src="./img/img5.jpg" alt="" srcset="" class = "mx-auto d-block img-fluid">
     
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere libero consequuntur deserunt quam nostrum eius inventore voluptatem corrupti nesciunt illo officiis, voluptates aspernatur soluta necessitatibus earum sit, quae commodi praesentium!
                     Libero similique odio molestias, modi quia soluta impedit culpa quam quae exercitationem nesciunt pariatur quidem quaerat obcaecati amet magnam repellendus, deserunt ab, fugit ipsa vero eveniet! Ut quisquam accusantium nemo?
@@ -46,7 +46,7 @@
     <div class="row justify-content-center">
             <div class="col-5 border bg-light m-2">
                 <div class="p-3 ">
-                    <img src="./img/img5.jpg" alt="" srcset="" class = "img-fluid">
+                    <img src="./img/img5.jpg" alt="" srcset="" class = "mx-auto d-block img-fluid">
     
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere libero consequuntur deserunt quam nostrum eius inventore voluptatem corrupti nesciunt illo officiis, voluptates aspernatur soluta necessitatibus earum sit, quae commodi praesentium!
                     Libero similique odio molestias, modi quia soluta impedit culpa quam quae exercitationem nesciunt pariatur quidem quaerat obcaecati amet magnam repellendus, deserunt ab, fugit ipsa vero eveniet! Ut quisquam accusantium nemo?
@@ -55,7 +55,7 @@
             </div>
             <div class="col-5 border bg-light m-2">
                 <div class="p-3 ">
-                    <img src="./img/img6.jpg" alt="" srcset="" class = "img-fluid">
+                    <img src="./img/img6.jpg" alt="" srcset="" class = "mx-auto d-block img-fluid">
     
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere libero consequuntur deserunt quam nostrum eius inventore voluptatem corrupti nesciunt illo officiis, voluptates aspernatur soluta necessitatibus earum sit, quae commodi praesentium!
                     Libero similique odio molestias, modi quia soluta impedit culpa quam quae exercitationem nesciunt pariatur quidem quaerat obcaecati amet magnam repellendus, deserunt ab, fugit ipsa vero eveniet! Ut quisquam accusantium nemo?

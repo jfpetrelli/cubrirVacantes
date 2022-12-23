@@ -15,7 +15,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Cubrir Vacantes</a>
-    <div class="d-flex justify-content-end" id="navbarColor01">
+    <div class="d-flex justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="information.php">Informacion
@@ -40,22 +40,6 @@
 
 
 <body class="pt-5 mt-5 mb-5 pb-3">
-    
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+<?php include("templates/singin.php"); ?>

@@ -42,4 +42,4 @@
 <body class="pt-5 mt-5 mb-5 pb-3">
 
 
-<?php include("templates/singin.php"); ?>
+<?php include("templates/signin.php"); ?>

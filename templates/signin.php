@@ -11,13 +11,13 @@
                 <fieldset>
                     <div class="modal-body">
                         <div class="form-group my-3">
-                          <input type="email" class="form-control" placeholder="Email">
+                          <input type="text" class="form-control" placeholder="Usuario">
                         </div>
                         <div class="form-group my-3">
                             <input type="password" class="form-control" placeholder="Contraseña">
                         </div>
                         <div class="form-group my-2 text-end">
-                            <a class= "text-align-end" href="index.php"><small>Registrarse</small></a>
+                            <a class= "text-align-end" href="signup.php"><small>Registrarse</small></a>
                             <a class= "text-align-end" href="index.php"><small>Recuperar contraseña</small></a>
                         </div>
                         

@@ -45,7 +45,6 @@
 
             </div>
     </div>
-    
     <div class="row justify-content-center">
             <div class="col-5 border bg-light m-2">
                 <div class="p-3 text-center">

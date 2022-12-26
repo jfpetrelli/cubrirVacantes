@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="./css/bootstrap.css">
     <!-- JavaScript Bundle with Popper -->
-<script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
 </head>
 <header class="fixed-top">
 
@@ -28,7 +28,7 @@
           <a class="nav-link" href="contact.php">Contacto</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Iniciar Sesion</a>
+          <a class="nav-link" href="#" data-bs-toggle = "modal" data-bs-target = "#signinModal">Iniciar Sesion</a>
         </li>
     </ul>
     </div>

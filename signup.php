@@ -3,9 +3,9 @@
 <div class="container">
   <div class="row my-3 text-center">
     <h1>Registrarse</h1>
-    <form class=" border bg-light">
+    <form class=" border bg-light" action="registerok.php">
       <fieldset>
-        <div class="row justify-content-center m-2">
+      <div class="row justify-content-center m-2">
           <div class="col-5">
             <div class="form-group text-start">
               <label for="user" class="col-form-label">Usuario</label>
@@ -16,6 +16,20 @@
             <div class="form-group text-start">
               <label for="email" class="col-form-label">Email</label>
               <input type="email" class="form-control" id="email">
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center m-2">
+          <div class="col-5">
+            <div class="form-group text-start">
+              <label for="pass" class="col-form-label">Contraseña</label>
+              <input type="password" class="form-control" id="pass">
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="form-group text-start">
+              <label for="pass_2" class="col-form-label">Repetir Contraseña</label>
+              <input type="password" class="form-control" id="pass_2">
             </div>
           </div>
         </div>
@@ -110,6 +124,11 @@
                 <input type="text" class="form-control" id="appart">
               </div>
             </div>
+          </div>
+        </div>
+        <div class="row justify-content-center m-2">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Registrarse</button>
           </div>
         </div>
       </fieldset>

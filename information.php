@@ -11,7 +11,7 @@
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima perspiciatis cumque voluptates repellendus blanditiis dolorem libero totam saepe provident recusandae, esse, earum eius enim exercitationem incidunt assumenda rerum cupiditate!                           
                     </p>
                     <div class="d-flex justify-content-end">
-                        <a class="text-info" href="#">Ver mas</a>   
+                        <a class="text-info" href="#">Postularme</a>   
                     </div>
                 </div>   
             </div>
@@ -24,7 +24,7 @@
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima perspiciatis cumque voluptates repellendus blanditiis dolorem libero totam saepe provident recusandae, esse, earum eius enim exercitationem incidunt assumenda rerum cupiditate!                           
                     </p>
                     <div class="d-flex justify-content-end">
-                        <a class="text-info" href="#">Ver mas</a>   
+                        <a class="text-info" href="#">Postularme</a>   
                     </div>
                 </div>   
             </div>
@@ -37,7 +37,7 @@
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima perspiciatis cumque voluptates repellendus blanditiis dolorem libero totam saepe provident recusandae, esse, earum eius enim exercitationem incidunt assumenda rerum cupiditate!                           
                     </p>
                     <div class="d-flex justify-content-end">
-                        <a class="text-info" href="#">Ver mas</a>   
+                        <a class="text-info" href="#">Postularme</a>   
                     </div>
                 </div>   
             </div>

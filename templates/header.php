@@ -7,8 +7,8 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <!-- JavaScript Bundle with Popper -->
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
 </head>
 <header class="fixed-top">
 

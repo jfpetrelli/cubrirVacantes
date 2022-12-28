@@ -6,13 +6,13 @@
     <form class=" border bg-light" action="registerok.php">
       <fieldset>
       <div class="row justify-content-center m-2">
-          <div class="col-5">
+          <div class="col-6">
             <div class="form-group text-start">
               <label for="user" class="col-form-label">Usuario</label>
               <input type="text" class="form-control" id="user">
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-6">
             <div class="form-group text-start">
               <label for="email" class="col-form-label">Email</label>
               <input type="email" class="form-control" id="email">
@@ -20,13 +20,13 @@
           </div>
         </div>
         <div class="row justify-content-center m-2">
-          <div class="col-5">
+          <div class="col-6">
             <div class="form-group text-start">
               <label for="pass" class="col-form-label">Contraseña</label>
               <input type="password" class="form-control" id="pass">
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-6">
             <div class="form-group text-start">
               <label for="pass_2" class="col-form-label">Repetir Contraseña</label>
               <input type="password" class="form-control" id="pass_2">
@@ -34,13 +34,13 @@
           </div>
         </div>
         <div class="row justify-content-center m-2">
-          <div class="col-5">
+          <div class="col-6">
             <div class="form-group text-start">
               <label for="name" class="col-form-label">Nombre</label>
               <input type="text" class="form-control" id="name">
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-6">
             <div class="form-group text-start">
               <label for="surname" class="col-form-label">Apellido</label>
               <input type="text" class="form-control" id="surname">
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="row justify-content-center m-2">
-          <div class="col-5">
+          <div class="col-6">
             <div class="row justify-content-between">
               <div class="form-group text-start col-5">
                 <label for="tipo" class="col-form-label">Tipo</label>
@@ -64,7 +64,7 @@
               </div>
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-6">
             <div class="form-group text-start">
               <label for="birth" class="col-form-label">Fecha Nacimiento</label>
               <input type="date" class="form-control" id="birth" value = "<?php echo date('Y-m-d'); ?>">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="row justify-content-center m-2">
-          <div class="col-5">
+          <div class="col-6">
             <div class="row justify-content-between">
               <div class="form-group text-start col-6">
                 <label for="tipo" class="col-form-label">Provincia</label>
@@ -109,7 +109,7 @@
               </div>
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-6">
             <div class="row justify-content-between">
               <div class="form-group text-start col-6">
                 <label for="address" class="col-form-label">Direccion</label>
@@ -126,7 +126,7 @@
             </div>
           </div>
         </div>
-        <div class="row justify-content-center m-2">
+        <div class="row justify-content-center m-3">
           <div class="col-12">
             <button type="submit" class="btn btn-primary">Registrarse</button>
           </div>

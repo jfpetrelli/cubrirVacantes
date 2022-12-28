@@ -18,8 +18,7 @@
     <div class="d-flex justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="information.php">Informacion
-          </a>
+          <a class="nav-link" href="information.php">Postulaciones</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="help.php">Ayuda</a>

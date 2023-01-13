@@ -1,4 +1,4 @@
-<?php include("templates/header.php"); ?>
+<?php require_once("generic/header.php");  ?>
 
 <div class="row my-3 text-center">
   <h1>Registrarse</h1>
@@ -17,4 +17,4 @@
 </div>
 
 
-<?php include("templates/footer.php"); ?>
+<?php require_once("generic/footer.php");  ?>

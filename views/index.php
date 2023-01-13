@@ -1,4 +1,6 @@
-<?php include("templates/header.php"); ?>
+<?php require_once("generic/header.php"); ?>
+
+
 
 <div class="container text-center">
     <div class="row justify-content-center">
@@ -69,4 +71,4 @@
     </div>
 
 </div>
-<?php include("templates/footer.php"); ?>
+<?php include("generic/footer.php"); ?>

@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $resp = startSession();
 
-    echo 'POST';
+
 }else{
 
     $resp = closeSession();
-    echo 'GET';
+
 }
 
 

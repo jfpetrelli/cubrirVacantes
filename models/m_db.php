@@ -1,15 +1,16 @@
 <?php
     
-    class Conection{
+    class Connection{
 
         private $con;
 
-        public function __construct(){
+        public function connect(){
 
-            $this->con = new mysqli('localhost', 'root', 'root', 'cubrir_vacantes');
+           $con = new mysqli('localhost', 'root', 'root', 'cubrir_vacantes');
+           return $con;
 
         }
-
+/*
         public function getUsers(){
             
             $query = $this->con->query('SELECT * FROM users');
@@ -25,7 +26,7 @@
             return $res;
         }
 
-
+*/
     }
 
 

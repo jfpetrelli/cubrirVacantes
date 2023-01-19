@@ -36,6 +36,33 @@
     }
 
 
-    return header('Location:../views/registererror.php');
+    if(!empty($_POST['signin'])){
+
+        if(!empty($_POST['user_id']) && !empty($_POST['password'])){
+
+            try{
+                $user = new Users();
+                $resp = $user->signin($_POST['user_id'], $_POST['password']);
+                if($resp == 'ok'){
+                    return header('Location:../views/adminlogin.php');
+                }else{
+                    return header('Location:../views/registererror.php');
+                }
+            }catch(Exception $e){
+                echo $e;
+                //return header('Location:../views/registererror.php');
+            }   
+                            
+            
+        }
+
+
+
+//        return header('Location:../views/userlogin.php');
+
+    }
+
+
+ //   return header('Location:../views/registererror.php');
 
 ?>

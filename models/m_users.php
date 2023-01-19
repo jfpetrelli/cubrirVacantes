@@ -31,6 +31,20 @@ class Users{
 
     }
 
+
+    public function signin($user_id, $password){
+
+        $sql = $this->connection->query("SELECT admin FROM users where user_id = '$user_id' and password = '$password'");
+
+       if($sql == 1){
+           return 'ok';
+       }else{
+           return 'error';
+       }
+
+
+    }
+
 }
 
 

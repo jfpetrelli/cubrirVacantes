@@ -247,19 +247,19 @@
           </form>
         </div>
         <div class="tab-pane fade" id="cargarv">
-          <form action="#">
+          <form method="POST" action="../controllers/c_vacants.php">
             <fieldset>
               <div class="row justify-content-center m-2">
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="puesto" class="col-form-label">Puesto</label>
-                    <input type="text" class="form-control" id="puesto">
+                    <input type="text" class="form-control" id="puesto" name="place">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="carrera" class="col-form-label">Carrera</label>
-                    <select class="form-select" id="carrera">
+                    <select class="form-select" id="carrera" name="career">
                         <option default>Ingeniería de Sistemas</option>
                         <option>Ingeniería Química</option>
                         <option>Ingeniería Eléctrica</option>
@@ -272,13 +272,13 @@
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="f_ini" class="col-form-label">Fecha inicio inscripción</label>
-                    <input type="date" class="form-control" id="f_ini" value = "<?php echo date('Y-m-d'); ?>">
+                    <input type="date" class="form-control" id="f_ini" value = "<?php echo date('Y-m-d'); ?>" name="from_date">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="f_fin" class="col-form-label">Fecha fin inscripción</label>
-                    <input type="date" class="form-control" id="f_ini" value = "<?php echo date('Y-m-d'); ?>">
+                    <input type="date" class="form-control" id="f_ini" value = "<?php echo date('Y-m-d'); ?>" name="to_date">
                   </div>
                 </div>
               </div>
@@ -286,13 +286,13 @@
                 <div class="col-12">
                   <div class="form-group  text-start">
                     <label for="descrip" class="form-label mt-4">Example textarea</label>
-                    <textarea class="form-control" id="descrip" rows="3"></textarea>
+                    <textarea class="form-control" id="descrip" rows="3" name="detail"></textarea>
                   </div>
                 </div>
               </div>
               <div class="row justify-content-end m-3">
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Cargar Vacante</button>
+                  <button type="submit" class="btn btn-primary" name="register" value = "ok">Cargar Vacante</button>
                 </div>
               </div>
             </fieldset>

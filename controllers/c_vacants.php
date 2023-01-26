@@ -25,6 +25,4 @@
     }
 
 
-    return header('Location:../views/registererror.php');
-
 ?>

@@ -30,6 +30,24 @@ class Vacants{
 
     }
 
+    public function allVacants(){
+
+        $sql = mysqli_query($this->connection, " SELECT id, place FROM cubrir_vacantes.vacants where current_date() < to_date ");
+
+        return $sql;
+
+
+    }
+
+    public function expirationVacants(){
+
+        $sql = mysqli_query($this->connection, " SELECT from_date, to_date, place, career FROM cubrir_vacantes.vacants where to_date  <= current_date() ");
+
+        return $sql;
+
+
+    }
+
 }
 
 

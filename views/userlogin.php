@@ -1,4 +1,55 @@
-<?php require_once("generic/header.php");  ?>
+<?php require_once("generic/header.php"); 
+require_once("../controllers/c_users.php");
+require_once("../models/m_users.php");
+require_once("../models/m_vacants.php");
+
+if (!ISSET($_SESSION['user_id'])){
+
+  return header('Location:../views/index.php');
+
+
+}
+
+
+$users = new Users();
+$resp = $users->all($_SESSION['user_id']);
+
+if($_SESSION['admin'] == 1){
+  return header('Location:../views/adminlogin.php');
+}
+
+$email = '';
+$name = '';
+$surname = '';
+$appart = '';
+$floor = '';
+$address = '';
+$document_type = '';
+$document_number = '';
+$date_of_birth = '';
+$city = '';
+$state = '';
+
+while($row = mysqli_fetch_array($resp)){
+  $email = $row['email'];
+  $name = $row['name'];
+  $surname = $row['surname'];
+  $appart = $row['appart'];
+  $floor = $row['floor'];
+  $address = $row['address'];
+  $document_type = $row['document_type'];
+  $document_number = $row['document_number'];
+  $date_of_birth = $row['date_of_birth'];
+  $city = $row['city'];
+  $state = $row['state'];
+
+}
+
+$vacants = new Vacants();
+$resp = $vacants->allVacants();
+
+?>
+
 
 <div class="container">
   <div class="row my-3 justify-content-center text-center">
@@ -16,33 +67,19 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade show active" id="profile">
-          <form action="#">
+        <form action="#">
             <fieldset>
               <div class="row justify-content-center m-2">
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="user" class="col-form-label">Usuario</label>
-                    <input type="text" class="form-control" id="user" disabled>
+                    <input type="text" class="form-control" id="user" disabled value = "<?= $_SESSION['user_id'] ?>">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="email" class="col-form-label">Email</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
-                </div>
-              </div>
-              <div class="row justify-content-center m-2">
-                <div class="col-6">
-                  <div class="form-group text-start">
-                    <label for="pass" class="col-form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="pass">
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group text-start">
-                    <label for="pass_2" class="col-form-label">Repetir Contraseña</label>
-                    <input type="password" class="form-control" id="pass_2">
+                    <input type="email" class="form-control" id="email" disabled value = "<?= $email ?>">
                   </div>
                 </div>
               </div>
@@ -50,13 +87,13 @@
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="name" class="col-form-label">Nombre</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" disabled value = "<?= $name ?>">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="surname" class="col-form-label">Apellido</label>
-                    <input type="text" class="form-control" id="surname">
+                    <input type="text" class="form-control" id="surname" disabled value = "<?= $surname ?>">
                   </div>
                 </div>
               </div>
@@ -65,22 +102,18 @@
                   <div class="row justify-content-between">
                     <div class="form-group text-start col-5">
                       <label for="tipo" class="col-form-label">Tipo</label>
-                      <select class="form-select" id="tipo">
-                        <option default>DNI</option>
-                        <option>Lib. Civica</option>
-                        <option>Lib. Enrolamiento</option>
-                      </select>
+                      <input type="text" class="form-control" id="tipo" disabled value = "<?= $document_type ?>">
                     </div>
                     <div class="form-group text-start col-7">
                       <label for="dni" class="col-form-label">Numero</label>
-                      <input type="text" class="form-control" id="dni">
+                      <input type="text" class="form-control" id="dni" disabled value = "<?= $document_number ?>">
                     </div>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="birth" class="col-form-label">Fecha Nacimiento</label>
-                    <input type="date" class="form-control" id="birth" value = "<?php echo date('Y-m-d'); ?>">
+                    <input type="date" class="form-control" id="birth" disabled value = "<?= $date_of_birth ?>">
                   </div>
                 </div>
               </div>
@@ -89,36 +122,11 @@
                   <div class="row justify-content-between">
                     <div class="form-group text-start col-5">
                       <label for="tipo" class="col-form-label">Provincia</label>
-                      <select class="form-select" id="tipo">
-                        <option>Buenos Aires</option>
-                        <option>Capital Federal</option>
-                        <option>Catamarca</option>
-                        <option>Chaco</option>
-                        <option>Chubut</option>
-                        <option>Cordoba</option>
-                        <option>Corrientes</option>
-                        <option>Entre Rios</option>
-                        <option>Formosa</option>
-                        <option>Jujuy</option>
-                        <option>La Pampa</option>
-                        <option>La Rioja</option>
-                        <option>Mendoza</option>
-                        <option>Misiones</option>
-                        <option>Neuquen</option>
-                        <option>Rio Negro</option>
-                        <option>Salta</option>
-                        <option>San Juan</option>
-                        <option>San Luis</option>
-                        <option>Santa Cruz</option>
-                        <option>Santa Fe</option>
-                        <option>Santiago del Estero</option>
-                        <option>Tierra del Fuego</option>
-                        <option>Tucuman</option>
-                      </select>
+                      <input  type= "text" class="form-control" id="tipo" disabled value = "<?= $state ?>">
                     </div>
                     <div class="form-group text-start col-7">
-                      <label for="dni" class="col-form-label">Localidad</label>
-                      <input type="text" class="form-control" id="dni">
+                      <label for="localidad" class="col-form-label">Localidad</label>
+                      <input type="text" class="form-control" id="localidad" disabled value = "<?= $city ?>">
                     </div>
                   </div>
                 </div>
@@ -126,22 +134,17 @@
                   <div class="row justify-content-between">
                     <div class="form-group text-start col-8">
                       <label for="address" class="col-form-label">Direccion</label>
-                      <input type="text" class="form-control" id="address">
+                      <input type="text" class="form-control" id="address" disabled value = "<?= $address ?>">
                     </div>
                     <div class="form-group text-start col-2">
                       <label for="floor" class="col-form-label">Piso</label>
-                      <input type="text" class="form-control" id="floor">
+                      <input type="text" class="form-control" id="floor" disabled value = "<?= $floor ?>">
                     </div>
                     <div class="form-group text-start col-2">
                       <label for="appart" class="col-form-label">Dpto.</label>
-                      <input type="text" class="form-control" id="appart">
+                      <input type="text" class="form-control" id="appart" disabled value = "<?= $appart ?>">
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="row justify-content-end m-3">
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Actualizar</button>
                 </div>
               </div>
             </fieldset>
@@ -165,28 +168,34 @@
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade" id="cv">
-          <form class=" border bg-light" action="#">
+        <div class="tab-pane fade" id="cv">   
+          <form class=" border bg-light" action="../controllers/c_users_applications.php">
             <fieldset>
               <div class="row justify-content-center m-2">
                 <div class="col-6">
                   <div class="form-group text-start"> 
                     <label for="postulaciones" class="col-form-label">Vacantes</label>
-                    <select class="form-select" id="postulaciones">
-                      <option>Titular Matematica Superior</option>
+
+                    <select class="form-select" id="vacant" name = "vacant">
+                    <?php
+                    while($row = mysqli_fetch_array($resp)){
+                      ?><option value = "<?= $row['id'] ?>"><?=$row['place']?></option> <?php
+                    }
+
+                    ?>
                     </select>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group text-start"> 
                     <label for="cv" class="col-form-label">Cargar CV</label>
-                    <input type="file" class="form-control" id="cv">
+                    <input type="file" class="form-control" id="cv" name = "cv">
                   </div>
                 </div>
               </div>
               <div class="row justify-content-end m-3">
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Postularme</button>
+                  <button type="submit" class="btn btn-primary" name="postulate" value = "ok">Postularme</button>
                 </div>
               </div>
             </fieldset>

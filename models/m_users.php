@@ -34,15 +34,17 @@ class Users{
 
     public function signin($user_id, $password){
 
-        $sql = $this->connection->query("SELECT admin FROM users where user_id = '$user_id' and password = '$password'");
+        $sql = mysqli_query($this->connection, "SELECT admin FROM cubrir_vacantes.users where user_id = '$user_id' and password = '$password'");
 
-       if($sql == 1){
-           return 'ok';
-       }else{
-           return 'error';
-       }
+        return $sql;
+    }
 
 
+    public function all($user_id){
+
+        $sql = mysqli_query($this->connection, "SELECT name, surname, document_type, document_number, email, address, floor, appart, state, city, date_of_birth FROM cubrir_vacantes.users where user_id = '$user_id'");
+
+        return $sql;
     }
 
 }

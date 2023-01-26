@@ -38,31 +38,39 @@
 
     if(!empty($_POST['signin'])){
 
+        session_destroy();
         if(!empty($_POST['user_id']) && !empty($_POST['password'])){
 
             try{
                 $user = new Users();
                 $resp = $user->signin($_POST['user_id'], $_POST['password']);
-                if($resp == 'ok'){
-                    return header('Location:../views/adminlogin.php');
-                }else{
-                    return header('Location:../views/registererror.php');
+                $admin = 0;
+                while($row = mysqli_fetch_array($resp)){
+                    $admin = $row['admin'];
+                    session_start();
+                    $_SESSION['user_id'] = $_POST['user_id'];
+                    $_SESSION['user'] = $user;
+                    $_SESSION['admin'] = $admin;
+                    
+                    if($admin == 1){
+                        return header('Location:../views/adminlogin.php');
+                    }if($admin == 0){
+                        return header('Location:../views/userlogin.php');
+                    }
                 }
+                
+                session_destroy();
+                return header('Location:../views/usererror.php');
+                
             }catch(Exception $e){
                 echo $e;
-                //return header('Location:../views/registererror.php');
+                session_destroy();
+                return header('Location:../views/usererror.php');
             }   
                             
             
         }
 
-
-
-//        return header('Location:../views/userlogin.php');
-
     }
-
-
- //   return header('Location:../views/registererror.php');
 
 ?>

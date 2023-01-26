@@ -16,10 +16,10 @@
                 <fieldset>
                     <div class="modal-body">
                         <div class="form-group my-3">
-                          <input type="text" class="form-control" placeholder="Usuario" name="user_id">
+                          <input type="text" class="form-control" placeholder="Usuario" name="user_id" required>
                         </div>
                         <div class="form-group my-3">
-                            <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                            <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
                         </div>
                         <div class="form-group my-2 text-end">
                             <a class= "text-align-end" href="signup.php"><small>Registrarse</small></a>

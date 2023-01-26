@@ -169,7 +169,7 @@ $resp = $vacants->allVacants();
           </table>
         </div>
         <div class="tab-pane fade" id="cv">   
-          <form class=" border bg-light" action="../controllers/c_users_applications.php">
+          <form class=" border bg-light" action="../controllers/c_users_vacants.php" method = "POST" enctype="multipart/form-data">
             <fieldset>
               <div class="row justify-content-center m-2">
                 <div class="col-6">
@@ -189,7 +189,7 @@ $resp = $vacants->allVacants();
                 <div class="col-6">
                   <div class="form-group text-start"> 
                     <label for="cv" class="col-form-label">Cargar CV</label>
-                    <input type="file" class="form-control" id="cv" name = "cv">
+                    <input type="file" class="form-control" id="cv" name = "cvFile" required>
                   </div>
                 </div>
               </div>

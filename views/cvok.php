@@ -9,7 +9,12 @@
         </div>
     </div>
 </div>
+<div class="row form-group has-danger justify-content-center">
+      <div class="col-1 m-2">
+        <a href="userlogin.php"><input type="button" class="btn btn-primary" value = "Volver"></a>
+      </div>   
   </div>
+
 
 
 <?php require_once("generic/footer.php");  ?>

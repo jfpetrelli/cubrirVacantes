@@ -3,6 +3,7 @@ require_once("../controllers/c_users.php");
 require_once("../models/m_users.php");
 require_once("../models/m_vacants.php");
 
+
 if (!ISSET($_SESSION['user_id'])){
 
   return header('Location:../views/index.php');
@@ -160,11 +161,21 @@ $resp = $vacants->allVacants();
               </tr>
             </thead>
             <tbody>
-              <tr class="table-secondary">
-                <th scope="row">01/01/2023</th>
-                <td>31/01/2023</td>
-                <td>Titular Administración de Recursos</td>
-              </tr>
+            <?php
+                    include("../models/m_users_vacants.php");
+                    $userVacants = new UsersVacants();
+                    $resp2 = $userVacants->inscriptions($_SESSION['user_id']);
+                    while($row = mysqli_fetch_array($resp2)){
+                      ?><tr class="table-secondary">
+                      <th scope="row"><?= $row['from_date'] ?></th>
+                      <td><?= $row['to_date'] ?></td>
+                      <td><?= $row['place'] ?></td>
+                    </tr>
+                    <?php
+                    }
+
+                    ?>
+
             </tbody>
           </table>
         </div>

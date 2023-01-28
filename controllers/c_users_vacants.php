@@ -3,19 +3,17 @@
 require_once('../models/m_users_vacants.php');
 
 session_start();
-
-    $formatters = array('.doc','.pdf','.docx');
+$userVacants = new UsersVacants();
 
     if (!empty($_POST['postulate'])){
 
-
+         $formatters = array('.doc','.pdf','.docx');
          $user_id = $_SESSION['user_id'];
          $vacant = $_POST['vacant'];
          $cvName = $_FILES['cvFile']['name'];
          $cvTemp = $_FILES['cvFile']['tmp_name'];
          $ext = substr($cvName, strrpos($cvName, '.'));
 
-         $userVacants = new UsersVacants();
          $isexist = $userVacants->isexist($user_id, $vacant);
 
          if($isexist == 'error'){

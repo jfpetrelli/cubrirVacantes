@@ -30,18 +30,21 @@ class UsersVacants{
 
     public function isexist($user_id, $vacant){
 
-        $sql = mysqli_query($this->connection, "SELECT * FROM users_vacants where user = '$user_id' and vacant = '$vacant' and date = current_date() ");
+        $sql = mysqli_query($this->connection, "SELECT * FROM users_vacants where user = '$user_id' and vacant = '$vacant' ");
 
             if(mysqli_num_rows($sql)== 0){
                 return 'ok';
             }else{
                 return 'error';
             }
-            
 
+    }
 
+    public function inscriptions($user_id){
 
+        $sql = mysqli_query($this->connection, "select from_date, to_date, place from users_vacants uv inner join vacants v on uv.vacant = v.id where user = '$user_id' ");
 
+        return $sql;
 
     }
 

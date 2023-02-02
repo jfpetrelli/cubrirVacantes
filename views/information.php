@@ -1,47 +1,50 @@
-<?php include("generic/header.php"); ?>
+<?php include("generic/header.php"); 
+    include("../models/m_vacants.php");
+    $vacants = new Vacants();
+    $resp = $vacants->allVacants();
+
+    
+
+?>
 
 <div class="container">
     <div class="row my-3 text-center">
         <h1>Llamados a cubrir vacantes</h1>
+        <?php
+              
+        while($row = mysqli_fetch_array($resp)){
+        ?>
         <div class="row justify-content-center">
             <div class="col-10 border bg-light m-2">
                 <div class="p-3 text-start">
-                    <h4>Titular Diseño de Sistemas</h3>
+                    <h4><?= $row['place'] ?></h4>
+                    <h5><?= $row['career'] ?> &nbsp;  <?= $row['from_date'] ?> - <?= $row['to_date'] ?> </h5>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima perspiciatis cumque voluptates repellendus blanditiis dolorem libero totam saepe provident recusandae, esse, earum eius enim exercitationem incidunt assumenda rerum cupiditate!                           
+                        <?= $row['detail'] ?>                    
                     </p>
                     <div class="d-flex justify-content-end">
-                        <a class="text-info" href="#">Postularme</a>   
+                    <?php 
+                        if (ISSET($_SESSION['user_id'])){
+
+                            ?> <a class="text-info" href="userlogin.php">Postularme</a> 
+                            <?php
+                          
+                          }else{
+
+                            ?> <a class="text-info" href="" data-bs-toggle = "modal" data-bs-target = "#signinModal">Postularme</a>  
+                            <?php
+                          }
+                          
+                    ?>
+
                     </div>
-                </div>   
+                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-10 border bg-light m-2">
-                <div class="p-3 text-start">
-                    <h4>Adjunto Análisis Matemático II</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima perspiciatis cumque voluptates repellendus blanditiis dolorem libero totam saepe provident recusandae, esse, earum eius enim exercitationem incidunt assumenda rerum cupiditate!                           
-                    </p>
-                    <div class="d-flex justify-content-end">
-                        <a class="text-info" href="#">Postularme</a>   
-                    </div>
-                </div>   
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-10 border bg-light m-2">
-                <div class="p-3 text-start">
-                    <h4>Titular Teoría de Control</h3>
-                    <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima perspiciatis cumque voluptates repellendus blanditiis dolorem libero totam saepe provident recusandae, esse, earum eius enim exercitationem incidunt assumenda rerum cupiditate!                           
-                    </p>
-                    <div class="d-flex justify-content-end">
-                        <a class="text-info" href="#">Postularme</a>   
-                    </div>
-                </div>   
-            </div>
-        </div>
+        <?php
+            }
+        ?>
+   
     </div>
 
 </div>

@@ -2,6 +2,7 @@
 require_once("../controllers/c_users.php");
 require_once("../models/m_users.php");
 require_once("../models/m_vacants.php");
+require_once("../models/m_users_vacants.php");
 
 if (!ISSET($_SESSION['user_id'])){
 
@@ -46,6 +47,21 @@ while($row = mysqli_fetch_array($resp)){
 
 $vacants = new Vacants();
 $resp = $vacants->expirationVacants();
+$resp2 = $vacants->expirationVacants();
+
+$selected = '';
+
+if(!empty($_GET['search'])){
+    
+  $userVacants = new UsersVacants();
+  $resp3 = $userVacants->getScore($_GET['vacant']);
+  $selected = $_GET['vacant'];
+
+}else{
+  $selected = '';
+}
+
+
 
 ?>
 
@@ -54,20 +70,20 @@ $resp = $vacants->expirationVacants();
     <div class="col-12 border bg-light m-2">
       <ul class="nav nav-tabs my-2" id="myTab">
         <li class="nav-item">
-          <a href="#profile" class="nav-link active" data-bs-toggle="tab">Perfil</a>
+          <a href="#profile" class="nav-link <?php if($selected == ''){ ?> active <?php }?>" data-bs-toggle="tab">Perfil</a>
         </li>
         <li class="nav-item">
           <a href="#finalizadas" class="nav-link" data-bs-toggle="tab">Inscripciones finalizadas</a>
         </li>
         <li class="nav-item">
-          <a href="#puntajes" class="nav-link" data-bs-toggle="tab">Cargar puntajes</a>
+          <a href="#puntajes" class="nav-link <?php if($selected != ''){ ?> active <?php }?>" data-bs-toggle="tab">Cargar puntajes</a>
         </li>
         <li class="nav-item">
           <a href="#cargarv" class="nav-link" data-bs-toggle="tab">Cargar vacante</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="profile">
+        <div class="tab-pane fade <?php if($selected == ''){ ?> show active <?php }?>" id="profile">
           <form action="#">
             <fieldset>
               <div class="row justify-content-center m-2">
@@ -155,6 +171,7 @@ $resp = $vacants->expirationVacants();
           <table class="table align-middle">
             <thead>
               <tr class="table-primary">
+                <th scope="col">ID</th>
                 <th scope="col">Fecha Inicio</th>
                 <th scope="col">Fecha Cierre </th>
                 <th scope="col">Carrera</th>
@@ -167,12 +184,13 @@ $resp = $vacants->expirationVacants();
                     while($row = mysqli_fetch_array($resp)){
                       ?>
                       <tr class="table-secondary">
+                      <th scope="row"><?= $row['id']; ?>
                         <th scope="row"><?= $row['from_date']; ?>
                         <th scope="row"><?= $row['to_date']; ?>
                         <th scope="row"><?= $row['career']; ?>
                         <th scope="row"><?= $row['place']; ?>
                         <td>
-                          <a class= "text-align-end d-block" href="signup.php"><small>Descargar</small></a>
+                          <a class= "text-align-end d-block" href="../controllers/c_downloadCV.php?vacant=<?= $row['id']; ?>"><small>Descargar</small></a>
                           <a class= "text-align-end d-block" href="index.php"><small>Enviar por correo</small></a>
                         </td>
                       </tr>
@@ -184,26 +202,42 @@ $resp = $vacants->expirationVacants();
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade" id="puntajes">
-          <form class="" action="#">
+
+        <div class="tab-pane fade <?php if($selected != ''){ ?> show active <?php }?>" id="puntajes">
+          <form class=""  method = "GET">
             <fieldset>
               <div class="row justify-content-start m-2">
                 <div class="col-6">
                   <div class="form-group text-start"> 
                     <label for="postulaciones" class="col-form-label">Vacante</label>
-                    <select class="form-select" id="postulaciones">
-                      <option>Titular Matematica Superior</option>
+                    <select class="form-select" name="vacant">
+                    <?php
+                    while($row = mysqli_fetch_array($resp2)){
+                      ?><option value = "<?= $row['id'] ?>"
+                      <?php if($selected == $row['id']){
+                                  ?> selected <?php } 
+                            ?>>
+                      <?=$row['place']?></option> <?php
+                    }
+
+                    ?>
                     </select>
                   </div>
                 </div>
                 <div class="col-1 align-self-end">
-                  <button type="search" class="btn btn-primary">Buscar</button>
+                  <button type="submit" class="btn btn-primary" name="search" value = "ok">Buscar</button>
                 </div>
+                </fieldset>
+          </form>
+          <form class="" action="../controllers/c_users_vacants.php" method = "GET">
+          <input type="hidden" name="vacant" value="<?=$selected?>">
+            <fieldset>
                 <div class="row justify-content-start my-3">
                   <div class="col-12">
                     <table class="table align-middle">
                       <thead>
                         <tr class="table-primary">
+                        <th scope="col">Usuario</th>
                           <th scope="col">Fecha postulación</th>
                           <th scope="col">Apellido</th>
                           <th scope="col">Nombre</th>
@@ -211,38 +245,36 @@ $resp = $vacants->expirationVacants();
                         </tr>
                       </thead>
                       <tbody>
+                      <?php
+                      if(!empty($_GET['search'])){
+                    while($row = mysqli_fetch_array($resp3)){
+                      ?>
                       <tr class="table-secondary">
-                          <th scope="row">01/01/2023</th>
-                          <td>Petrelli</td>
-                          <td>Juan Franco</td>
-                          <td>
+                      <th scope="row"><input type="hidden" name = "user_id[]" value =<?= $row['user_id']; ?>><?= $row['user_id']; ?>
+                      <th scope="row"><?= $row['date']; ?>
+                        <th scope="row"><?= $row['surname']; ?>
+                        <th scope="row"><?= $row['name']; ?>
+                        <td>
                             <div class="row justify-content-center">
                               <div class="col-3">
-                                <input class="form-control" type="number">
+                                <input class="form-control" type="number" name= "score[]" min="0" value= "<?= $row['score']; ?>">
                               </div>
                             </div>
                           </td>
-                        </tr>
-                        <tr class="table-secondary">
-                          <th scope="row">01/01/2023</th>
-                          <td>Petrelli</td>
-                          <td>Juan Franco</td>
-                          <td>
-                            <div class="row justify-content-center">
-                              <div class="col-3">
-                                <input class="form-control" type="number">
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
+                      </tr>
+                      <?php
+
+                    }
+                  }
+
+            ?>
                       </tbody>
                     </table>
                   </div>    
                 </div>
-              </div>
               <div class="row justify-content-end m-3">
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Cargar</button>
+                  <button type="submit" class="btn btn-primary" name="upload" value = "ok">Cargar</button>
                 </div>
               </div>
             </fieldset>

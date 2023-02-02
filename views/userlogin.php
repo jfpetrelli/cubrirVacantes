@@ -187,7 +187,7 @@ $resp = $vacants->allVacants();
                   <div class="form-group text-start"> 
                     <label for="postulaciones" class="col-form-label">Vacantes</label>
 
-                    <select class="form-select" id="vacant" name = "vacant">
+                    <select class="form-select" id="vacant" name = "vacant" required>
                     <?php
                     while($row = mysqli_fetch_array($resp)){
                       ?><option value = "<?= $row['id'] ?>"><?=$row['place']?></option> <?php

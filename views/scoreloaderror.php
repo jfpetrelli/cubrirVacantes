@@ -5,8 +5,8 @@ if (!ISSET($_SESSION['user_id'])){
 
 }
 
-if($_SESSION['admin'] == 1){
-    return header('Location:../views/adminlogin.php');
+if($_SESSION['admin'] == 0){
+    return header('Location:../views/userlogin.php');
   }
 
 ?>
@@ -16,13 +16,13 @@ if($_SESSION['admin'] == 1){
   <div class="container">
   <div class="row form-group has-danger justify-content-center">
       <div class="col-4">
-        <input type="text" value="Error al postularse, ya se encuentra postulado para esta vacante." class="form-control is-invalid" disabled>
+        <input type="text" value="Error al cargas el puntaje." class="form-control is-invalid" disabled>
       </div>    
     </div>
   </div>
   <div class="row form-group has-danger justify-content-center">
       <div class="col-1 m-2">
-        <a href="userlogin.php"><input type="button" class="btn btn-primary" value = "Volver"></a>
+        <a href="adminlogin.php"><input type="button" class="btn btn-primary" value = "Volver"></a>
       </div>    
   </div>
 </div>

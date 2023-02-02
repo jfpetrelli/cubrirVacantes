@@ -5,27 +5,27 @@ if (!ISSET($_SESSION['user_id'])){
 
 }
 
-if($_SESSION['admin'] == 1){
-    return header('Location:../views/adminlogin.php');
+if($_SESSION['admin'] == 0){
+    return header('Location:../views/userlogin.php');
   }
 
 ?>
 
 <div class="row my-3 text-center">
-    <h1>Postulación</h1>
+    <h1>Puntajes</h1>
     <div class="container">
     <div class="row form-group has-success justify-content-center">
         <div class="col-3">
-        <input type="text" value="Postulación exitosa" class="form-control is-valid" disabled>
+        <input type="text" value="Puntajes cargados" class="form-control is-valid" disabled>
         </div>
     </div>
-</div>
-<div class="row form-group has-danger justify-content-center">
+    <div class="row form-group has-danger justify-content-center">
       <div class="col-1 m-2">
-        <a href="userlogin.php"><input type="button" class="btn btn-primary" value = "Volver"></a>
-      </div>   
+        <a href="adminlogin.php"><input type="button" class="btn btn-primary" value = "Volver"></a>
+      </div>    
   </div>
-
+</div>
+  </div>
 
 
 <?php require_once("generic/footer.php");  ?>

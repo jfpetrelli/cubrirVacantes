@@ -48,6 +48,41 @@ class UsersVacants{
 
     }
 
+
+    public function getScore($vacant){
+
+        $sql = mysqli_query($this->connection, "SELECT u.user_id, uv.date, surname, name, uv.score FROM users_vacants uv
+        inner join vacants v on uv.vacant = v.id
+        inner join users u on uv.user = u.user_id where v.end_vacant = 0 and uv.vacant = $vacant");
+
+        return $sql;
+
+    }
+
+    public function insertScore($vacant, $users_id, $scores){
+
+        try{
+
+        
+        for($i = 0; $i < count($users_id); $i ++){
+            
+            $score = $scores[$i];
+            $user_id = $users_id[$i];
+            $sql = $this->connection->query(" UPDATE users_vacants SET score = $score where vacant = $vacant and user = '$user_id' ");
+        
+        }
+
+        $sql = $this->connection->query(" UPDATE vacants SET end_vacant = 1 where id = $vacant");
+
+        return 'ok';
+        }catch (\Throwable $th) {
+            return 'error';
+        }
+
+    }
+
+
+
 }
 
 

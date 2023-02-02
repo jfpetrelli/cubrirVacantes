@@ -1,4 +1,12 @@
-<?php require_once("generic/header.php");  ?>
+<?php require_once("generic/header.php");  
+if (!ISSET($_SESSION['user_id'])){
+
+  echo $_SESSION['admin'];
+  //return header('Location:../views/index.php');
+
+
+}
+?>
 
 <div class="row my-3 text-center">
     <div class="container">

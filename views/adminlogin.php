@@ -11,13 +11,18 @@ if (!ISSET($_SESSION['user_id'])){
 
 }
 
+//Creo una instancia de la clase Users y traigo los datos del usuario (sea admin o no)
+
 $users = new Users();
 $resp = $users->all($_SESSION['user_id']);
 
+//Si el usuario no es administrador lo envio a su sesion.
 if($_SESSION['admin'] == 0){
   return header('Location:../views/userlogin.php');
 }
 
+
+//Guardo los datos del perfil del usuario para rellenar
 $email = '';
 $name = '';
 $surname = '';
@@ -45,17 +50,21 @@ while($row = mysqli_fetch_array($resp)){
 
 }
 
+//Creo instancia de la clase Vacants
 $vacants = new Vacants();
-$resp = $vacants->expirationVacants();
-$resp2 = $vacants->expirationVacants();
+$resp = $vacants->expirationVacants();  // Muestra las inscripciones finalizadas que ya pueden descargarse
+$resp2 = $vacants->expirationVacants(); // Muestra las inscripciones finalizadas en el select para cargar los meritos
 
+
+
+//Muestro los usuarios postulados para cargar los puntajes
 $selected = '';
 
 if(!empty($_GET['search'])){
     
   $userVacants = new UsersVacants();
-  $resp3 = $userVacants->getScore($_GET['vacant']);
-  $selected = $_GET['vacant'];
+  $resp3 = $userVacants->getScore($_GET['vacant']); // Traigo los usuarios postulados en una vacante
+  $selected = $_GET['vacant']; // variable para guardar la vacante seleccionada
 
 }else{
   $selected = '';
@@ -191,7 +200,7 @@ if(!empty($_GET['search'])){
                         <th scope="row"><?= $row['place']; ?>
                         <td>
                           <a class= "text-align-end d-block" href="../controllers/c_downloadCV.php?vacant=<?= $row['id']; ?>"><small>Descargar</small></a>
-                          <a class= "text-align-end d-block" href="index.php"><small>Enviar por correo</small></a>
+                          <a class= "text-align-end d-block" href="#"><small>Enviar por correo</small></a>
                         </td>
                       </tr>
                       <?php

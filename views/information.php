@@ -1,5 +1,7 @@
 <?php include("generic/header.php"); 
     include("../models/m_vacants.php");
+
+    //Creo instancia de Vacantes para mostrar los datos de la vacante que está abierta para inscribirse
     $vacants = new Vacants();
     $resp = $vacants->allVacants();
 
@@ -12,7 +14,7 @@
         <h1>Llamados a cubrir vacantes</h1>
         <?php
               
-        while($row = mysqli_fetch_array($resp)){
+        while($row = mysqli_fetch_array($resp)){ // Recorro el grilla que me devuelve la consulta
         ?>
         <div class="row justify-content-center">
             <div class="col-10 border bg-light m-2">
@@ -24,12 +26,12 @@
                     </p>
                     <div class="d-flex justify-content-end">
                     <?php 
-                        if (ISSET($_SESSION['user_id'])){
+                        if (ISSET($_SESSION['user_id'])){   //Si existe una sesion abierta redirecciono
 
                             ?> <a class="text-info" href="userlogin.php">Postularme</a> 
                             <?php
                           
-                          }else{
+                          }else{    //sino pido que inicie sesion
 
                             ?> <a class="text-info" href="" data-bs-toggle = "modal" data-bs-target = "#signinModal">Postularme</a>  
                             <?php

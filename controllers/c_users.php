@@ -2,6 +2,7 @@
 
     require_once('../models/m_users.php');
 
+    //Registro de nuevo usuario (no admin)
 
     if(!empty($_POST['register'])){
     
@@ -35,6 +36,8 @@
     
     }
 
+
+    //Inicio de Sesion y Cierre de Sesion (guardo los campos en variables de sesion)
 
     if(!empty($_POST['signin'])){
 

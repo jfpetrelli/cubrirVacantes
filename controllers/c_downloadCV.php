@@ -5,7 +5,7 @@ require_once('../models/m_vacants.php');
 session_start();
 
 $vacant = $_GET['vacant'];
-$vacantPath = new Vacants();
+$vacantPath = new Vacants(); // Creo instancia de Vacante para traer la ruta de la carpeta donde se guardan los CVS de esta vacante
 $resp2 = $vacantPath->getPath($vacant);
 $path;
 while($row = mysqli_fetch_array($resp2)){
@@ -18,9 +18,11 @@ $zip = new ZipArchive();
 // Creamos y abrimos un archivo zip temporal
  $zip->open("CVS.zip",ZipArchive::CREATE);
 
+ //Se añade un directorio
  $files =array_slice(scandir($path),2);
+
  foreach($files as $file){
-    //Añadimos un archivo dentro del directorio que hemos creado
+    //Añadimos los archivo dentro del directorio
     $zip->addFile("$path/".$file);
 }
 

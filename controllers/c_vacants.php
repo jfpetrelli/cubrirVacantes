@@ -9,15 +9,15 @@
             && !empty($_POST['from_date']) && !empty($_POST['to_date'])){
 
             try{
-                $user = new Vacants();
-                $path = "../cvs/" . $_POST['place'] . ' ' . $_POST['from_date'] . ' ' . $_POST['to_date'] ; 
+                $vacant = new Vacants();  //Creo instancia de Vacante
+                $path = "../cvs/" . $_POST['place'] . ' ' . $_POST['from_date'] . ' ' . $_POST['to_date'] ;  // Creo la ruta donde va a estar la Carpeta con los CVS de esta Vacante
                 if(!is_dir($path)){
-                    mkdir($path);
+                    mkdir($path); // Creo la carpeta
                 }else{
                     return header('Location:../views/404.php');
                 }
                 
-                $resp = $user->insert($_POST['place'], $_POST['career'], $_POST['from_date'], $_POST['to_date'], $_POST['detail'], $path);
+                $resp = $vacant->insert($_POST['place'], $_POST['career'], $_POST['from_date'], $_POST['to_date'], $_POST['detail'], $path); // Mando los datos para guardaros en BD
 
                 if($resp == 'ok'){
                     return header('Location:../views/vacantok.php');

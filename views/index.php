@@ -1,4 +1,8 @@
-<?php require_once("generic/header.php"); ?>
+<?php require_once("generic/header.php"); 
+
+//Relleno
+
+?>
 
 
 

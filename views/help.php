@@ -1,4 +1,7 @@
-<?php require_once("generic/header.php");  ?>
+<?php require_once("generic/header.php");
+//No programar
+
+?>
 
 <div class="container">
     <div class="row my-3 text-center">

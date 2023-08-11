@@ -18,7 +18,7 @@ class UsersVacants{
     public function insert($user_id, $vacant, $cvName){
 
         try {
-            $sql = $this->connection->query("INSERT INTO users_vacants (user, vacant, date, cvFile) VALUES ('$user_id','$vacant', current_date() ,'$cvName') ");
+            $sql = $this->connection->query("INSERT INTO users_vacants (user, vacant, date, cvFile, score) VALUES ('$user_id','$vacant', current_date() ,'$cvName', 0) ");
 
             return 'ok';
         } catch (\Throwable $th) {
@@ -30,14 +30,17 @@ class UsersVacants{
 
     public function isexist($user_id, $vacant){
 
-        $sql = mysqli_query($this->connection, "SELECT * FROM users_vacants where user = '$user_id' and vacant = '$vacant' ");
+        $sql = mysqli_query($this->connection, "SELECT count(*) as tot FROM users_vacants where user = '$user_id' and vacant = '$vacant' ");
+        $tot = 0;
 
-            if(mysqli_num_rows($sql)== 0){
-                return 'ok';
-            }else{
-                return 'error';
-            }
-
+        while($row = mysqli_fetch_array($sql)){
+            $tot = $row['tot'];
+        }
+        if($tot == 0){
+            return 'ok';
+        }else{
+            return 'error';
+        }
     }
 
     public function inscriptions($user_id){
@@ -78,6 +81,16 @@ class UsersVacants{
         }catch (\Throwable $th) {
             return 'error';
         }
+
+    }
+
+    public function getAllScore($vacant){
+
+        $sql = mysqli_query($this->connection, "SELECT u.user_id, uv.date, surname, name, uv.score FROM users_vacants uv
+        inner join vacants v on uv.vacant = v.id
+        inner join users u on uv.user = u.user_id where v.end_vacant = 1 and uv.vacant = $vacant order by uv.score desc");
+
+        return $sql;
 
     }
 

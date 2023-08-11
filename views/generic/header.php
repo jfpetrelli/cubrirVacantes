@@ -41,6 +41,9 @@ if (ISSET($_SESSION['user_id'])){
           <a class="nav-link" href="information.php">Postulaciones</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="meritos.php">Meritos</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="help.php">Ayuda</a>
         </li>
         <li class="nav-item">

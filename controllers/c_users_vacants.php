@@ -8,6 +8,9 @@ $userVacants = new UsersVacants();
 
     if (!empty($_POST['postulate'])){
 
+        $user_id = $_SESSION['user_id'];
+        $vacant = $_POST['vacant'];
+
         $isexist = $userVacants->isexist($user_id, $vacant);
 
         if($isexist == 'error'){
@@ -15,8 +18,6 @@ $userVacants = new UsersVacants();
         }
 
          $formatters = array('.doc','.pdf','.docx');
-         $user_id = $_SESSION['user_id'];
-         $vacant = $_POST['vacant'];
          $cvName = $_FILES['cvFile']['name'];
          $cvTemp = $_FILES['cvFile']['tmp_name'];
          $ext = substr($cvName, strrpos($cvName, '.'));
@@ -28,7 +29,7 @@ $userVacants = new UsersVacants();
 
         }
  
-         if (in_array($ext, $formatters)){
+        if (in_array($ext, $formatters)){
             if(move_uploaded_file($cvTemp, "$path/$cvName")){
 
                 $resp = $userVacants->insert($user_id, $vacant, $cvName);
@@ -39,6 +40,8 @@ $userVacants = new UsersVacants();
                     header("Location:../views/cverror.php");
                 }
             }
+        }else{
+            return header("Location:../views/formaterror.php");
         }
         
     }

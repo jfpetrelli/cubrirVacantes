@@ -61,13 +61,16 @@ $resp2 = $vacants->expirationVacants(); // Muestra las inscripciones finalizadas
 $selected = '';
 
 if(!empty($_GET['search'])){
-    
+  if(empty($_GET['vacant'])){
+    return header('Location:../views/searchvacanterror.php');
+  }
   $userVacants = new UsersVacants();
   $resp3 = $userVacants->getScore($_GET['vacant']); // Traigo los usuarios postulados en una vacante
   $selected = $_GET['vacant']; // variable para guardar la vacante seleccionada
 
 }else{
   $selected = '';
+  
 }
 
 
@@ -200,7 +203,7 @@ if(!empty($_GET['search'])){
                         <th scope="row"><?= $row['place']; ?>
                         <td>
                           <a class= "text-align-end d-block" href="../controllers/c_downloadCV.php?vacant=<?= $row['id']; ?>"><small>Descargar</small></a>
-                          <a class= "text-align-end d-block" href="#"><small>Enviar por correo</small></a>
+                          <a class= "text-align-end d-block" href="../controllers/c_enviar_correo.php?vacant=<?= $row['id']; ?>"><small>Enviar por correo</small></a>
                         </td>
                       </tr>
                       <?php
@@ -213,7 +216,7 @@ if(!empty($_GET['search'])){
         </div>
 
         <div class="tab-pane fade <?php if($selected != ''){ ?> show active <?php }?>" id="puntajes">
-          <form class=""  method = "GET">
+          <form class=""   method = "GET">
             <fieldset>
               <div class="row justify-content-start m-2">
                 <div class="col-6">
@@ -265,7 +268,7 @@ if(!empty($_GET['search'])){
                         <th scope="row"><?= $row['name']; ?>
                         <td>
                             <div class="row justify-content-center">
-                              <div class="col-3">
+                              <div class="col-4">
                                 <input class="form-control" type="number" name= "score[]" min="0" value= "<?= $row['score']; ?>">
                               </div>
                             </div>
@@ -328,7 +331,7 @@ if(!empty($_GET['search'])){
               <div class="row justify-content-center m-2">
                 <div class="col-12">
                   <div class="form-group  text-start">
-                    <label for="descrip" class="form-label mt-4">Example textarea</label>
+                    <label for="descrip" class="form-label mt-4">Descripción</label>
                     <textarea class="form-control" id="descrip" rows="3" name="detail"></textarea>
                   </div>
                 </div>

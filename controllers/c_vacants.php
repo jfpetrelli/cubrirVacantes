@@ -14,15 +14,15 @@
                 if(is_dir($path)){
                     return header('Location:../views/404.php');
                 }
-                $fecha_actual = date("d-m-Y");
+                $fecha_actual = date("Y-m-d");
                 $to_date = $_POST['to_date'] ;
-                $to_date = date("d-m-Y",strtotime($to_date));
+//                $to_date = date("d-m-Y",strtotime($to_date));
                 $from_date = $_POST['from_date'] ;
-                $from_date = date("d-m-Y",strtotime($from_date));
+//                $from_date = date("d-m-Y",strtotime($from_date));
                 if($fecha_actual > $to_date){
                     return header('Location:../views/vacanterror.php');
                 }
-                if($from_date >= $to_date){
+                if($from_date > $to_date){
                     return header('Location:../views/vacanterror.php');
                 }
                 

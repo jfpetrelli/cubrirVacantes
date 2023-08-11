@@ -50,7 +50,7 @@ class Vacants{
 
     public function getPath($vacant){
 
-        $sql = mysqli_query($this->connection, "select path from vacants  where id = $vacant ");
+        $sql = mysqli_query($this->connection, "select path, place, career, ifnull(detail,'') as detail from vacants  where id = $vacant ");
 
         return $sql;
 

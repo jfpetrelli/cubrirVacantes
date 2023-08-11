@@ -5,14 +5,13 @@ if (!ISSET($_SESSION['user_id'])){
 
 }
 
-if($_SESSION['admin'] == 1){
-    return header('Location:../views/adminlogin.php');
+if($_SESSION['admin'] == 0){
+    return header('Location:../views/userlogin.php');
   }
 
 ?>
 
 <div class="row my-3 text-center">
-    <h1>Envío de Correo</h1>
     <div class="container">
     <div class="row form-group has-success justify-content-center">
         <div class="col-3">

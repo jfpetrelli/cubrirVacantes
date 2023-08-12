@@ -32,7 +32,7 @@ class Vacants{
 
     public function allVacants(){
 
-        $sql = mysqli_query($this->connection, " SELECT id, place, career, from_date, to_date, detail FROM cubrir_vacantes.vacants where current_date >= from_date and current_date() <= to_date and end_vacant = 0 ");
+        $sql = mysqli_query($this->connection, " SELECT id, place, career, from_date, to_date, detail FROM vacants where current_date >= from_date and current_date() <= to_date and end_vacant = 0 ");
 
         return $sql;
 
@@ -41,7 +41,7 @@ class Vacants{
 
     public function expirationVacants(){
 
-        $sql = mysqli_query($this->connection, " SELECT id, from_date, to_date, place, career FROM cubrir_vacantes.vacants where to_date  < current_date() and end_vacant = 0 ");
+        $sql = mysqli_query($this->connection, " SELECT id, from_date, to_date, place, career FROM vacants where to_date  < current_date() and end_vacant = 0 ");
 
         return $sql;
 
@@ -58,7 +58,7 @@ class Vacants{
 
     public function allVacantsEnd(){
 
-        $sql = mysqli_query($this->connection, " SELECT id, place, career FROM cubrir_vacantes.vacants where end_vacant = 1 ");
+        $sql = mysqli_query($this->connection, " SELECT id, place, career FROM vacants where end_vacant = 1 ");
 
         return $sql;
 

@@ -6,8 +6,14 @@
 
         public function connect(){
 
-           $con = new mysqli('localhost', 'root', 'root', 'cubrir_vacantes');
-           return $con;
+            $dbhost = 'localhost';
+            $dbuser = 'c1671526_cs';
+            $dbpass = 'POsima22sa';
+            $dbname = 'c1671526_cub_vac';
+        
+            $con=mysqli_connect($dbhost,$dbuser,$dbpass);
+            mysqli_select_db($con,$dbname); 
+            return $con; 
 
         }
 

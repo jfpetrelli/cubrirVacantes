@@ -65,6 +65,12 @@ class Vacants{
 
     }
 
+    public function updateEndVacant($vacant){
+
+        $sql = $this->connection->query("UPDATE vacants SET end_vacant = 1 WHERE id = $vacant ;");
+
+    }
+
 }
 
 

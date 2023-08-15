@@ -62,6 +62,10 @@ $userVacants = new UsersVacants();
                     header("Location:../views/scoreloaderror.php");
                 }
                 
+            }else{
+                $vacant = new Vacants();
+                $vacant->updateEndVacant($_GET['vacant']);
+                header("Location:../views/vacantesincv.php");
             }
             
             

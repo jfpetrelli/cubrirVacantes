@@ -10,10 +10,10 @@
         }
     }
 
-  if($_SESSION['admin'] == '1'){
+  if($_SESSION['admin'] == 1){
     return header('Location:../views/adminlogin.php');
   }
-  if($_SESSION['admin'] == '0'){
+  if($_SESSION['admin'] == 0){
     return header('Location:../views/userlogin.php');
   }
     

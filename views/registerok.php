@@ -4,8 +4,8 @@
     <h1>Registrarse</h1>
     <div class="container">
     <div class="row form-group has-success justify-content-center">
-        <div class="col-3">
-        <input type="text" value="Registro exitoso" class="form-control is-valid" disabled>
+        <div class="col-6">
+        <input title="Registro exitoso" type="text" value="Registro exitoso" class="form-control is-valid" disabled>
         </div>
     </div>
 </div>

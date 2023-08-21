@@ -15,14 +15,14 @@ if($_SESSION['admin'] == 0){
   <h1>Postulación</h1>
   <div class="container">
   <div class="row form-group has-danger justify-content-center">
-      <div class="col-4">
+      <div class="col-6">
         <input type="text" value="Error al cargas el puntaje." class="form-control is-invalid" disabled>
       </div>    
     </div>
   </div>
   <div class="row form-group has-danger justify-content-center">
       <div class="col-1 m-2">
-        <a href="adminlogin.php"><input type="button" class="btn btn-primary" value = "Volver"></a>
+        <a href="adminlogin.php"><input title="Volver" type="button" class="btn btn-primary" value = "Volver"></a>
       </div>    
   </div>
 </div>

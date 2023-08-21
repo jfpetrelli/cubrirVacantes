@@ -1,6 +1,6 @@
 <?php 
-
 session_start();
+ob_start();
 $existe = false;
 if (ISSET($_SESSION['user_id'])){
 
@@ -21,21 +21,21 @@ if (ISSET($_SESSION['user_id'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <script src="./js/jquery-3.6.3.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <link rel="shortcut icon" href="./img/utn.ico" />
+    <link rel="shortcut icon" href="./img/utn.ico" sizes="(min-width: 1420px) 1420px, 100vw"/>
     
-
+    <title>Cubrir Vacantes</title>
     
 </head>
+<body class="pt-5 mt-5 mb-5 pb-3">
 <header class="fixed-top">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">Cubrir Vacantes</a>
+    <a class="navbar-brand" href="index.php" title="Pag. Principal">Cubrir Vacantes</a>
     <div class="d-flex justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -54,7 +54,7 @@ if (ISSET($_SESSION['user_id'])){
         <?php 
          if($existe){
           ?>
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg alt="Person" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></a>
           <div class="dropdown-menu  navbar-dark bg-primary" style = "right:1%; left:auto;">
           <a class="nav-link" href="../controllers/c_userSession.php">Perfil</a>  
@@ -79,9 +79,6 @@ if (ISSET($_SESSION['user_id'])){
 
 
 </header>
-
-
-<body class="pt-5 mt-5 mb-5 pb-3">
 
 
 <?php require_once("signin.php"); ?>

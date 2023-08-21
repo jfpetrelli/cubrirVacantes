@@ -7,7 +7,7 @@
   <div class="row my-3 text-center">
     <h1>Registrarse</h1>
     <form class=" border bg-light" method="POST" action="../controllers/c_users.php">
-      <fieldset>
+      
       <div class="row justify-content-center m-2">
           <div class="col-6">
             <div class="form-group text-start">
@@ -131,10 +131,10 @@
         </div>
         <div class="row justify-content-center m-3">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary" name="register" value = "ok">Registrarse</button>
+            <button title="Registrarse" type="submit" class="btn btn-primary" name="register" value = "ok">Registrarse</button>
           </div>
         </div>
-      </fieldset>
+      
     </form>
   </div>
 </div>

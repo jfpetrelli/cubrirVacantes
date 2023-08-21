@@ -2,6 +2,28 @@
 
     require_once('../models/m_users.php');
 
+    //Actualizar mail de admin (para envio de CVS)
+
+    if(!empty($_POST['uploadMail'])){
+        session_start();
+        if(!empty($_POST['email'])){
+            
+            try{
+                $user = new Users();
+                $resp = $user->updateMail($_SESSION['user_id'], $_POST['email']);
+                if($resp == 'ok'){
+                    return header('Location:../views/mailupok.php');
+                }else{
+                    return header('Location:../views/mailuperror.php');
+                }
+            }catch(Exception $e){
+                return header('Location:../views/mailuperror.php');
+            }   
+
+        }
+    
+    }
+
     //Registro de nuevo usuario (no admin)
 
     if(!empty($_POST['register'])){

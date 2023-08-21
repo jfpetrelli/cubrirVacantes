@@ -17,23 +17,38 @@ class UsersVacants{
 
     public function insert($user_id, $vacant, $cvName){
 
-        try {
-            $sql = $this->connection->query("INSERT INTO users_vacants (user, vacant, date, cvFile, score) VALUES ('$user_id','$vacant', current_date() ,'$cvName', 0) ");
-
-            return 'ok';
-        } catch (\Throwable $th) {
+        try{
+            $conn = $this->connection;
+            $sql = "INSERT INTO users_vacants (user, vacant, date, cvFile, score) VALUES (?, ?, current_date() , ?, 0) ";
+            $stmt = $conn->prepare($sql); 
+            $stmt->bind_param("sss"
+                                , $user_id
+                                , $vacant
+                                , $cvName);
+            
+            if($stmt->execute()){
+                return 'ok';
+            }else{
+                return 'error';
+            }
+        
+        }catch (\Throwable $th) {
             return 'error';
         }
-
 
     }
 
     public function isexist($user_id, $vacant){
-
-        $sql = mysqli_query($this->connection, "SELECT count(*) as tot FROM users_vacants where user = '$user_id' and vacant = '$vacant' ");
+    
         $tot = 0;
-
-        while($row = mysqli_fetch_array($sql)){
+        $conn = $this->connection;
+        $sql = "SELECT count(*) as tot FROM users_vacants where user = ? and vacant = ? ";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("ss", $user_id, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        while($row = mysqli_fetch_array($result)){
             $tot = $row['tot'];
         }
         if($tot == 0){
@@ -41,24 +56,34 @@ class UsersVacants{
         }else{
             return 'error';
         }
+
     }
 
     public function inscriptions($user_id){
 
-        $sql = mysqli_query($this->connection, "select from_date, to_date, place from users_vacants uv inner join vacants v on uv.vacant = v.id where user = '$user_id' ");
-
-        return $sql;
-
+        $conn = $this->connection;
+        $sql = "select from_date, to_date, place from users_vacants uv inner join vacants v on uv.vacant = v.id where user = ? ";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("s", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result;
     }
 
 
     public function getScore($vacant){
 
-        $sql = mysqli_query($this->connection, "SELECT u.user_id, uv.date, surname, name, uv.score FROM users_vacants uv
+        $conn = $this->connection;
+        $sql = "SELECT u.user_id, uv.date, surname, name, uv.score FROM users_vacants uv
         inner join vacants v on uv.vacant = v.id
-        inner join users u on uv.user = u.user_id where v.end_vacant = 0 and uv.vacant = $vacant");
-
-        return $sql;
+        inner join users u on uv.user = u.user_id where v.end_vacant = 0 and uv.vacant = ? ";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("s", $vacant);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result;
 
     }
 
@@ -86,11 +111,17 @@ class UsersVacants{
 
     public function getAllScore($vacant){
 
-        $sql = mysqli_query($this->connection, "SELECT u.user_id, uv.date, surname, name, uv.score FROM users_vacants uv
+        $conn = $this->connection;
+        $sql = "SELECT u.user_id, uv.date, surname, name, uv.score FROM users_vacants uv
         inner join vacants v on uv.vacant = v.id
-        inner join users u on uv.user = u.user_id where v.end_vacant = 1 and uv.vacant = $vacant order by uv.score desc");
+        inner join users u on uv.user = u.user_id where v.end_vacant = 1 and uv.vacant = ? order by uv.score desc";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("s", $vacant);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result;
 
-        return $sql;
 
     }
 

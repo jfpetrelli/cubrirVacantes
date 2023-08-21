@@ -96,8 +96,7 @@ if(!empty($_GET['search'])){
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade <?php if($selected == ''){ ?> show active <?php }?>" id="profile">
-          <form action="#">
-            <fieldset>
+          <form action="../controllers/c_users.php" method = "POST">
               <div class="row justify-content-center m-2">
                 <div class="col-6">
                   <div class="form-group text-start">
@@ -108,7 +107,7 @@ if(!empty($_GET['search'])){
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="email" class="col-form-label">Email</label>
-                    <input type="email" class="form-control" id="email" disabled value = "<?= $email ?>">
+                    <input type="email" class="form-control" id="email" name = "email" value = "<?= $email ?>">
                   </div>
                 </div>
               </div>
@@ -176,7 +175,11 @@ if(!empty($_GET['search'])){
                   </div>
                 </div>
               </div>
-            </fieldset>
+              <div class="row justify-content-end m-3">
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary" title="Cargar mail" name="uploadMail" value = "ok">Cargar Correo</button>
+                </div>
+              </div>
           </form>
         </div>
         <div class="tab-pane fade" id="finalizadas">
@@ -217,7 +220,6 @@ if(!empty($_GET['search'])){
 
         <div class="tab-pane fade <?php if($selected != ''){ ?> show active <?php }?>" id="puntajes">
           <form class=""   method = "GET">
-            <fieldset>
               <div class="row justify-content-start m-2">
                 <div class="col-6">
                   <div class="form-group text-start"> 
@@ -237,13 +239,12 @@ if(!empty($_GET['search'])){
                   </div>
                 </div>
                 <div class="col-1 align-self-end">
-                  <button type="submit" class="btn btn-primary" name="search" value = "ok">Buscar</button>
+                  <button type="submit" class="btn btn-primary" title="Buscar" name="search" value = "ok">Buscar</button>
                 </div>
-                </fieldset>
+              </div>
           </form>
           <form class="" action="../controllers/c_users_vacants.php" method = "GET">
           <input type="hidden" name="vacant" value="<?=$selected?>">
-            <fieldset>
                 <div class="row justify-content-start my-3">
                   <div class="col-12">
                     <table class="table align-middle">
@@ -286,15 +287,13 @@ if(!empty($_GET['search'])){
                 </div>
               <div class="row justify-content-end m-3">
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary" name="upload" value = "ok">Cargar</button>
+                  <button type="submit" class="btn btn-primary" title="Cargar" name="upload" value = "ok">Cargar</button>
                 </div>
               </div>
-            </fieldset>
           </form>
         </div>
         <div class="tab-pane fade" id="cargarv">
           <form method="POST" action="../controllers/c_vacants.php">
-            <fieldset>
               <div class="row justify-content-center m-2">
                 <div class="col-6">
                   <div class="form-group text-start">
@@ -338,10 +337,9 @@ if(!empty($_GET['search'])){
               </div>
               <div class="row justify-content-end m-3">
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary" name="register" value = "ok">Cargar Vacante</button>
+                  <button title="Cargar vacante" type="submit" class="btn btn-primary" name="register" value = "ok">Cargar Vacante</button>
                 </div>
               </div>
-            </fieldset>
           </form>
         </div>
 

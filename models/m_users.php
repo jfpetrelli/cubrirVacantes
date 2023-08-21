@@ -18,33 +18,82 @@ class Users{
     public function insert($user_id, $password, $name, $surname, 
     $document_type, $document_number, $date_of_birth, $city, $state, $address, $email, $appart, $floor){
 
-        $sql = $this->connection->query(" INSERT into users(user_id, password, name, surname, admin, document_type, document_number, date_of_birth, city, state, address, email, appart, floor) values
-        ('$user_id', '$password', '$name', '$surname', false, 
-        '$document_type', '$document_number', '$date_of_birth', '$city', '$state', '$address', '$email', '$appart', '$floor')");
+        try{
+            $conn = $this->connection;
+            $sql = " INSERT into users(user_id, password, name, admin,  surname, document_type, document_number, date_of_birth, city, state, address, email, appart, floor) values
+            (?, ?, ?, false, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+            $stmt = $conn->prepare($sql); 
+            $stmt->bind_param("sssssssssssss"
+                                , $user_id
+                                , $password
+                                , $name
+                                , $surname
+                                , $document_type
+                                , $document_number
+                                , $date_of_birth
+                                , $city
+                                , $state
+                                , $address
+                                , $email
+                                , $appart
+                                , $floor);
+            
+            if($stmt->execute()){
+                return 'ok';
+            }else{
+                return 'error';
+            }
 
-        if($sql == 1){
-            return 'ok';
-        }else{
+        }catch (\Throwable $th) {
             return 'error';
         }
 
+    }
+
+    public function updateMail($user_id, $email){
+
+        try{
+            $conn = $this->connection;
+            $sql = "UPDATE users SET email = ? WHERE user_id = ? ";
+            $stmt = $conn->prepare($sql); 
+            $stmt->bind_param("ss"
+                                , $email
+                                , $user_id);
+            
+            if($stmt->execute()){
+                return 'ok';
+            }else{
+                return 'error';
+            }
+
+        }catch (\Throwable $th) {
+            return 'error';
+        }
 
     }
 
 
     public function signin($user_id, $password){
 
-        $sql = mysqli_query($this->connection, "SELECT admin FROM users where user_id = '$user_id' and password = '$password'");
-
-        return $sql;
+        $conn = $this->connection;
+        $sql = "SELECT admin FROM users where user_id = ? and password = ? ";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("ss", $user_id, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;   
     }
 
 
     public function all($user_id){
 
-        $sql = mysqli_query($this->connection, "SELECT name, surname, document_type, document_number, email, address, floor, appart, state, city, date_of_birth FROM users where user_id = '$user_id'");
-
-        return $sql;
+        $conn = $this->connection;
+        $sql = "SELECT name, surname, document_type, document_number, email, address, floor, appart, state, city, date_of_birth FROM users where user_id = ? ";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("s", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;   
     }
 
 }

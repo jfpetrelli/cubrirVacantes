@@ -4,14 +4,14 @@
   <h1>Registrarse</h1>
   <div class="container">
   <div class="row form-group has-danger justify-content-center">
-      <div class="col-4">
+      <div class="col-6">
         <input type="text" value="Error al registrarse, reintentelo nuevamente" class="form-control is-invalid" disabled>
       </div>    
     </div>
   </div>
   <div class="row form-group has-danger justify-content-center">
       <div class="col-1 m-2">
-        <a href="signup.php"><input type="button" class="btn btn-primary" value = "Volver"></a>
+        <a href="signup.php"><input title="Volver" type="button" class="btn btn-primary" value = "Volver"></a>
       </div>    
   </div>
 </div>

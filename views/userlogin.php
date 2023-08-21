@@ -8,16 +8,17 @@ if (!ISSET($_SESSION['user_id'])){
 
   return header('Location:../views/index.php');
 
-
 }
-
 
 $users = new Users();
 $resp = $users->all($_SESSION['user_id']);
 
 if($_SESSION['admin'] == 1){
   return header('Location:../views/adminlogin.php');
+  
 }
+
+
 
 $email = '';
 $name = '';
@@ -69,7 +70,7 @@ $resp = $vacants->allVacants();
       <div class="tab-content">
         <div class="tab-pane fade show active" id="profile">
         <form action="#">
-            <fieldset>
+            
               <div class="row justify-content-center m-2">
                 <div class="col-6">
                   <div class="form-group text-start">
@@ -148,7 +149,7 @@ $resp = $vacants->allVacants();
                   </div>
                 </div>
               </div>
-            </fieldset>
+            
           </form>
         </div>
         <div class="tab-pane fade" id="postulaciones">
@@ -181,7 +182,7 @@ $resp = $vacants->allVacants();
         </div>
         <div class="tab-pane fade" id="cv">   
           <form class=" border bg-light" action="../controllers/c_users_vacants.php" method = "POST" enctype="multipart/form-data">
-            <fieldset>
+            
               <div class="row justify-content-center m-2">
                 <div class="col-6">
                   <div class="form-group text-start"> 
@@ -206,10 +207,10 @@ $resp = $vacants->allVacants();
               </div>
               <div class="row justify-content-end m-3">
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary" name="postulate" value = "ok">Postularme</button>
+                  <button title="Postularme" type="submit" class="btn btn-primary" name="postulate" value = "ok">Postularme</button>
                 </div>
               </div>
-            </fieldset>
+            
           </form>
         </div>
       </div>

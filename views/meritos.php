@@ -26,12 +26,12 @@
             <div class="col-10 border bg-light m-2">
                 <div class="p-3 text-start">
                     <form class="row justify-content-center"  method = "GET">
-                      <fieldset>
+                      
                         <div class="row justify-content-start m-2">
                           <div class="col-6">
                             <div class="form-group text-start"> 
                               <label for="vacantes" class="col-form-label">Vacante</label>
-                              <select class="form-select" name="vacant">
+                              <select class="form-select" name="vacant" id="vacantes">
                               <?php
                               while($row = mysqli_fetch_array($resp)){
                                 ?><option value = "<?= $row['id'] ?>"
@@ -46,13 +46,13 @@
                             </div>
                           </div>
                           <div class="col-1 align-self-end">
-                            <button type="submit" class="btn btn-primary" name="search" value = "ok">Buscar</button>
+                            <button title="Buscar Vacante" type="submit" class="btn btn-primary" name="search" value = "ok">Buscar</button>
                           </div>
-                      </fieldset>
+                      
                     </form>
                     <form class="" action="../controllers/c_users_vacants.php" method = "GET">
                         <input type="hidden" name="vacant" value="<?=$selected?>">
-                        <fieldset>
+                        
                             <div class="row justify-content-start my-3">
                                 <div class="col-12">
                                     <table class="table align-middle">
@@ -87,7 +87,7 @@
                                     </table>
                                 </div>    
                             </div>
-                        </fieldset>
+                        
                     </form>
                 </div>                    
             </div>    

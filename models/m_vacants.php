@@ -18,12 +18,26 @@ class Vacants{
     public function insert($place, $career, $from_date, $to_date, 
     $detail, $path){
 
-        $sql = $this->connection->query(" INSERT into vacants(place, career, from_date, to_date, detail, path, end_vacant) values
-        ('$place', '$career', '$from_date', '$to_date', '$detail', '$path', 0)");
+        try{
+            $conn = $this->connection;
+            $sql = " INSERT into vacants(place, career, from_date, to_date, detail, path, end_vacant) values
+            (?, ?, ?, ?, ?, ?, 0)";
+            $stmt = $conn->prepare($sql); 
+            $stmt->bind_param("ssssss"
+                                , $place
+                                , $career
+                                , $from_date
+                                , $to_date
+                                , $detail
+                                , $path);
+            
+            if($stmt->execute()){
+                return 'ok';
+            }else{
+                return 'error';
+            }
 
-        if($sql == 1){
-            return 'ok';
-        }else{
+        }catch (\Throwable $th) {
             return 'error';
         }
 
@@ -32,11 +46,9 @@ class Vacants{
 
     public function allVacants(){
 
-        $sql = mysqli_query($this->connection, " SELECT id, place, career, from_date, to_date, detail FROM vacants where current_date >= from_date and current_date() <= to_date and end_vacant = 0 ");
+        $sql = mysqli_query($this->connection, "SELECT id, place, career, from_date, to_date, detail FROM vacants where current_date >= from_date and current_date() <= to_date and end_vacant = 0 ");
 
-        return $sql;
-
-
+        return $sql;  
     }
 
     public function expirationVacants(){
@@ -50,9 +62,13 @@ class Vacants{
 
     public function getPath($vacant){
 
-        $sql = mysqli_query($this->connection, "select path, place, career, ifnull(detail,'') as detail from vacants  where id = $vacant ");
-
-        return $sql;
+        $conn = $this->connection;
+        $sql = "select path, place, career, ifnull(detail,'') as detail from vacants  where id = ? ";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("s", $vacant);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
 
     }
 
@@ -67,7 +83,11 @@ class Vacants{
 
     public function updateEndVacant($vacant){
 
-        $sql = $this->connection->query("UPDATE vacants SET end_vacant = 1 WHERE id = $vacant ;");
+        $conn = $this->connection;
+            $sql = "UPDATE vacants SET end_vacant = 1 WHERE id = ? ";
+            $stmt = $conn->prepare($sql); 
+            $stmt->bind_param("s", $vacant);
+            $stmt->execute();
 
     }
 

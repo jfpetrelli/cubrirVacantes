@@ -10,7 +10,7 @@
             <div class="col-10 border bg-light m-2">
                 <div class="p-3 text-start">
                     <h4>Pregunta Frecuente 1</h3>
-                    <p>
+                    <p lang="zxx">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima perspiciatis cumque voluptates repellendus blanditiis dolorem libero totam saepe provident recusandae, esse, earum eius enim exercitationem incidunt assumenda rerum cupiditate!                           
                     </p>
                     <div class="d-flex justify-content-end">
@@ -23,7 +23,7 @@
             <div class="col-10 border bg-light m-2">
                 <div class="p-3 text-start">
                     <h4>Pregunta Frecuente 2</h3>
-                    <p>
+                    <p lang="zxx">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus minima perspiciatis cumque voluptates repellendus blanditiis dolorem libero totam saepe provident recusandae, esse, earum eius enim exercitationem incidunt assumenda rerum cupiditate!                           
                     </p>
                     <div class="d-flex justify-content-end">

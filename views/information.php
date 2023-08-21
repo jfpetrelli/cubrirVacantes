@@ -25,30 +25,27 @@
                         <?= $row['detail'] ?>                    
                     </p>
                     <div class="d-flex justify-content-end">
-                    <?php 
-                        if (ISSET($_SESSION['user_id'])){   //Si existe una sesion abierta redirecciono
+                        <?php 
+                            if (ISSET($_SESSION['user_id'])){   //Si existe una sesion abierta redirecciono
 
-                            ?> <a class="text-info" href="userlogin.php">Postularme</a> 
-                            <?php
-                          
-                          }else{    //sino pido que inicie sesion
+                                ?> <a class="text-info" href="userlogin.php">Postularme</a> 
+                                <?php
 
-                            ?> <a class="text-info" href="" data-bs-toggle = "modal" data-bs-target = "#signinModal">Postularme</a>  
-                            <?php
-                          }
-                          
-                    ?>
+                              }else{    //sino pido que inicie sesion
 
+                                ?> <a class="text-info" href="" data-bs-toggle = "modal" data-bs-target = "#signinModal">Postularme</a>  
+                                <?php
+                              }
+
+                        ?>
                     </div>
-                 </div>
+                </div>
             </div>
         </div>
         <?php
             }
         ?>
-   
     </div>
-
 </div>
 
 <?php require_once("generic/footer.php"); ?>

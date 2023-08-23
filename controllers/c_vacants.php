@@ -24,7 +24,6 @@
                     exit();
                 }
                 
-                if(!$ok) exit();
                 
                 $resp = $vacant->insert($_POST['place'], $_POST['career'], $_POST['from_date'], $_POST['to_date'], $_POST['detail'], $path); // Mando los datos para guardaros en BD
 

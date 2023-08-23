@@ -6,17 +6,18 @@
         if($_GET['signoff'] == 1){
             session_start();
             session_destroy();
-            return header('Location:../views/index.php');
+            header('Location:../views/index.php');
+            exit();
         }
     }
 
   if($_SESSION['admin'] == 1){
-    return header('Location:../views/adminlogin.php');
+    header('Location:../views/adminlogin.php');
+    exit();
   }
   if($_SESSION['admin'] == 0){
-    return header('Location:../views/userlogin.php');
+    header('Location:../views/userlogin.php');
+    exit();
   }
-    
-
 
 ?>

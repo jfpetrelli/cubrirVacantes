@@ -2,7 +2,6 @@
 
     require_once('../models/m_vacants.php');
 
-
     if(!empty($_POST['register'])){
     
         if(!empty($_POST['place']) && !empty($_POST['career']) 
@@ -12,35 +11,38 @@
                 $vacant = new Vacants();  //Creo instancia de Vacante
                 $path = "../cvs/" . $_POST['place'] . ' ' . $_POST['from_date'] . ' ' . $_POST['to_date'] ;  // Creo la ruta donde va a estar la Carpeta con los CVS de esta Vacante
                 if(is_dir($path)){
-                    return header('Location:../views/404.php');
+                    header('Location:../views/404.php');
+                    exit();
                 }
                 $fecha_actual = date("Y-m-d");
                 $to_date = $_POST['to_date'] ;
 //                $to_date = date("d-m-Y",strtotime($to_date));
                 $from_date = $_POST['from_date'] ;
 //                $from_date = date("d-m-Y",strtotime($from_date));
-                if($fecha_actual > $to_date){
-                    return header('Location:../views/vacanterror.php');
+                if($fecha_actual > $to_date || $from_date > $to_date){
+                    header('Location:../views/vacanterror.php');
+                    exit();
                 }
-                if($from_date > $to_date){
-                    return header('Location:../views/vacanterror.php');
-                }
+                
+                if(!$ok) exit();
                 
                 $resp = $vacant->insert($_POST['place'], $_POST['career'], $_POST['from_date'], $_POST['to_date'], $_POST['detail'], $path); // Mando los datos para guardaros en BD
 
                 if($resp == 'ok'){
                     mkdir($path); // Creo la carpeta
-                    return header('Location:../views/vacantok.php');
+                    header('Location:../views/vacantok.php');
+                    exit();
                 }else{
-                    return header('Location:../views/vacanterror.php');
+                    header('Location:../views/vacanterror.php');
+                    exit();
                 }
             }catch(Exception $e){
-                return header('Location:../views/404.php');
+                header('Location:../views/404.php');
+                exit();
             }   
             
         }
     
     }
-
 
 ?>

@@ -14,7 +14,8 @@ $userVacants = new UsersVacants();
         $isexist = $userVacants->isexist($user_id, $vacant);
 
         if($isexist == 'error'){
-           return header("Location:../views/cverror.php");
+           header("Location:../views/cverror.php");
+           exit();
         }
 
          $formatters = array('.doc','.pdf','.docx');
@@ -36,12 +37,15 @@ $userVacants = new UsersVacants();
 
                 if($resp == 'ok'){
                     header("Location:../views/cvok.php");
+                    exit();
                 }else{
                     header("Location:../views/cverror.php");
+                    exit();
                 }
             }
         }else{
-            return header("Location:../views/formaterror.php");
+            header("Location:../views/formaterror.php");
+            exit();
         }
         
     }
@@ -50,7 +54,7 @@ $userVacants = new UsersVacants();
 
         if(empty($_GET['vacant'])){
             header("Location:../views/scoreloaderror.php");
-            
+            exit();
             
         }else{
             if(!empty($_GET['user_id'])){
@@ -58,14 +62,17 @@ $userVacants = new UsersVacants();
 
                 if($resp3 == 'ok'){
                     header("Location:../views/scoreloadok.php");
+                    exit();
                 }else{
                     header("Location:../views/scoreloaderror.php");
+                    exit();
                 }
                 
             }else{
                 $vacant = new Vacants();
                 $vacant->updateEndVacant($_GET['vacant']);
                 header("Location:../views/vacantesincv.php");
+                exit();
             }
             
             

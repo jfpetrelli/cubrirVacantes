@@ -1,1 +1,4 @@
+RewriteEngine on
+RedirectMatch 301 ^/cubrirVacantes/$ /cubrirVacantes/views/index.php
+
 Options All -Indexes

@@ -12,12 +12,15 @@
                 $user = new Users();
                 $resp = $user->updateMail($_SESSION['user_id'], $_POST['email']);
                 if($resp == 'ok'){
-                    return header('Location:../views/mailupok.php');
+                    header('Location:../views/mailupok.php');
+                    exit();
                 }else{
-                    return header('Location:../views/mailuperror.php');
+                    header('Location:../views/mailuperror.php');
+                    exit();
                 }
             }catch(Exception $e){
-                return header('Location:../views/mailuperror.php');
+                header('Location:../views/mailuperror.php');
+                exit();
             }   
 
         }
@@ -42,13 +45,16 @@
                     , $_POST['address'], $_POST['email'], $_POST['floor'], $_POST['appart']);
 
                     if($resp == 'ok'){
-                        return header('Location:../views/registerok.php');
+                        header('Location:../views/registerok.php');
+                        exit();
                     }else{
-                        return header('Location:../views/registererror.php');
+                        header('Location:../views/registererror.php');
+                        exit();
                     }
                 }catch(Exception $e){
 
-                    return header('Location:../views/registererror.php');
+                    header('Location:../views/registererror.php');
+                    exit();
                 }   
                 
 
@@ -78,24 +84,27 @@
                     $_SESSION['admin'] = $admin;
                     
                     if($admin == 1){
-                        return header('Location:../views/adminlogin.php');
+                        header('Location:../views/adminlogin.php');
+                        exit();
                     }if($admin == 0){
-                        return header('Location:../views/userlogin.php');
+                        header('Location:../views/userlogin.php');
+                        exit();
                     }
                 }
                 
                 session_destroy();
-                return header('Location:../views/usererror.php');
+                header('Location:../views/usererror.php');
+                exit();
                 
             }catch(Exception $e){
                 echo $e;
                 session_destroy();
-                return header('Location:../views/usererror.php');
+                header('Location:../views/usererror.php');
+                exit();
             }   
                             
             
         }
 
     }
-
 ?>

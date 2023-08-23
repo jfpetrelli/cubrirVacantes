@@ -49,15 +49,16 @@ while($row = mysqli_fetch_array($resp2)){
    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //seguridad
    $mail->Host = "smtp.gmail.com"; // servidor smtp
    $mail->Port = 465; //puerto 587
-   $mail->Username ='pruebatotti@gmail.com'; //nombre usuario
-   $mail->Password = 'nxwcfswyopjajden'; //contraseña
+   include("../config/config.php");
+   $mail->Username =$user_mail; //nombre usuario
+   $mail->Password = $pass_mail; //contraseña
    
    foreach($files as $file){
       $mail->AddAttachment("$path/".$file);
    }
 
    //Agregar destinatario
-   $mail->setFrom('pruebatotti@gmail.com', 'CVs Cubrir Vacantes');
+   $mail->setFrom($user_mail, 'CVs Cubrir Vacantes');
    $mail->AddAddress($emailUser);
    $mail->isHTML(true);
    $mail->CharSet = 'UTF-8';
@@ -65,13 +66,14 @@ while($row = mysqli_fetch_array($resp2)){
    $mail->Body = 'Informes de CVs'."<br>".$detail;
    $ok = $mail->send();
    if($ok){
-      return header('Location:../views/mailok.php');
+      header('Location:../views/mailok.php');
+      exit();
    }else{
-      return header('Location:../views/mailerror.php');
+      header('Location:../views/mailerror.php');
+      exit();
    }
    }catch(Exception $e){
      echo $mail->ErrorInfo;
    }
-
 
 ?>

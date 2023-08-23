@@ -8,7 +8,8 @@
 
     if(!empty($_GET['search'])){
         if(empty($_GET['vacant'])){
-            return header('Location:../views/searchvacanterror.php');
+            header('Location:../views/searchvacanterror.php');
+            exit();
           }
         $userVacants = new UsersVacants();
         $resp3 = $userVacants->getAllScore($_GET['vacant']); // Traigo los usuarios postulados en una vacante

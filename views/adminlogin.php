@@ -4,9 +4,10 @@ require_once("../models/m_users.php");
 require_once("../models/m_vacants.php");
 require_once("../models/m_users_vacants.php");
 
-if (!ISSET($_SESSION['user_id'])){
+if (!isset($_SESSION['user_id'])){
 
-  return header('Location:../views/index.php');
+  header('Location:../views/index.php');
+  exit();
 
 
 }
@@ -18,7 +19,8 @@ $resp = $users->all($_SESSION['user_id']);
 
 //Si el usuario no es administrador lo envio a su sesion.
 if($_SESSION['admin'] == 0){
-  return header('Location:../views/userlogin.php');
+  header('Location:../views/userlogin.php');
+  exit();
 }
 
 
@@ -62,7 +64,8 @@ $selected = '';
 
 if(!empty($_GET['search'])){
   if(empty($_GET['vacant'])){
-    return header('Location:../views/searchvacanterror.php');
+    header('Location:../views/searchvacanterror.php');
+    exit();
   }
   $userVacants = new UsersVacants();
   $resp3 = $userVacants->getScore($_GET['vacant']); // Traigo los usuarios postulados en una vacante

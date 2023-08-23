@@ -4,9 +4,10 @@ require_once("../models/m_users.php");
 require_once("../models/m_vacants.php");
 
 
-if (!ISSET($_SESSION['user_id'])){
+if (!isset($_SESSION['user_id'])){
 
-  return header('Location:../views/index.php');
+  header('Location:../views/index.php');
+  exit();
 
 }
 
@@ -14,7 +15,8 @@ $users = new Users();
 $resp = $users->all($_SESSION['user_id']);
 
 if($_SESSION['admin'] == 1){
-  return header('Location:../views/adminlogin.php');
+  header('Location:../views/adminlogin.php');
+  exit();
   
 }
 

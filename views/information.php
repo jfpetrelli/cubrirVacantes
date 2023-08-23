@@ -26,7 +26,7 @@
                     </p>
                     <div class="d-flex justify-content-end">
                         <?php 
-                            if (ISSET($_SESSION['user_id'])){   //Si existe una sesion abierta redirecciono
+                            if (isset($_SESSION['user_id'])){   //Si existe una sesion abierta redirecciono
 
                                 ?> <a class="text-info" href="userlogin.php">Postularme</a> 
                                 <?php

@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 $existe = false;
-if (ISSET($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])){
 
   if (!($_SESSION['user_id'] == null || $_SESSION['user_id'] == '')) {
     $existe = true;

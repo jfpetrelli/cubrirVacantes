@@ -1,6 +1,7 @@
 <?php
 
     require_once('../models/m_users.php');
+    require_once('c_inactiveSession.php');
 
     //Actualizar mail de admin (para envio de CVS)
 
@@ -37,6 +38,15 @@
         && !empty($_POST['address']) && !empty($_POST['email']) && !empty($_POST['password2'])){
 
 
+            $f1 = new DateTime($_POST['date_of_birth']);
+            $f2 = new DateTime("now");
+ 
+            $diferencia =  $f1->diff($f2);
+            if ($diferencia->format("%y") < 18) {
+                header('Location:../views/registererror.php');
+                exit();
+            }
+
             if($_POST['password'] == $_POST['password2']){
                 try{
                     $user = new Users();
@@ -60,6 +70,8 @@
 
             }
             
+            header('Location:../views/registererror.php');
+            exit();
         }
     
     }
@@ -82,6 +94,7 @@
                     $_SESSION['user_id'] = $_POST['user_id'];
                     $_SESSION['user'] = $user;
                     $_SESSION['admin'] = $admin;
+                    $_SESSION['tiempo'] = time();
                     
                     if($admin == 1){
                         header('Location:../views/adminlogin.php');

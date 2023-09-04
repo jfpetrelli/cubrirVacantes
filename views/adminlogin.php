@@ -57,7 +57,7 @@ $vacants = new Vacants();
 $resp = $vacants->expirationVacants();  // Muestra las inscripciones finalizadas que ya pueden descargarse
 $resp2 = $vacants->expirationVacants(); // Muestra las inscripciones finalizadas en el select para cargar los meritos
 
-
+$resp4 = $users->allUsers(); // Muestra todos los usuarios
 
 //Muestro los usuarios postulados para cargar los puntajes
 $selected = '';
@@ -95,6 +95,9 @@ if(!empty($_GET['search'])){
         </li>
         <li class="nav-item">
           <a href="#cargarv" class="nav-link" data-bs-toggle="tab">Cargar vacante</a>
+        </li>
+        <li class="nav-item">
+          <a href="#users" class="nav-link" data-bs-toggle="tab">Usuarios registrados</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -344,6 +347,45 @@ if(!empty($_GET['search'])){
                 </div>
               </div>
           </form>
+        </div>
+
+        <div class="tab-pane fade" id="users">    
+                <div class="row justify-content-start my-3">
+                  <div class="col-12">
+                    <table class="table align-middle">
+                      <thead>
+                        <tr class="table-primary">
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Apellido</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Documento</th>
+                          <th scope="col">Fecha Nacimiento</th>
+                          <th scope="col">Provincia</th>
+                          <th scope="col">Ciudad</th>
+                          <th scope="col">Domicilio</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                    while($row = mysqli_fetch_array($resp4)){
+                      ?>
+                      <tr class="table-secondary">
+                      <th scope="row"><?= $row['user_id']; ?>
+                      <th scope="row"><?= $row['surname']; ?>
+                      <th scope="row"><?= $row['name']; ?>
+                      <th scope="row"><?= $row['document']; ?>
+                      <th scope="row"><?= $row['date']; ?>
+                      <th scope="row"><?= $row['state']; ?>
+                      <th scope="row"><?= $row['city']; ?>
+                      <th scope="row"><?= $row['address']; ?>
+                      </tr>
+                      <?php
+                    }
+            ?>
+                      </tbody>
+                    </table>
+                  </div>    
+                </div>
         </div>
 
       </div>

@@ -12,7 +12,7 @@
           <div class="col-6">
             <div class="form-group text-start">
               <label for="user_id" class="col-form-label">Usuario</label>
-              <input type="text" class="form-control" id="user_id" name="user_id" required>
+              <input type="text" class="form-control" id="user_id" name="user_id" minlength=4 maxlength=8 required>
             </div>
           </div>
           <div class="col-6">
@@ -26,13 +26,13 @@
           <div class="col-6">
             <div class="form-group text-start">
               <label for="password" class="col-form-label">Contraseña</label>
-              <input type="password" class="form-control" id="pass" name="password" required minlength=8>
+              <input type="password" class="form-control" id="pass" name="password" required minlength=8 maxlength=12>
             </div>
           </div>
           <div class="col-6">
             <div class="form-group text-start">
               <label for="password2" class="col-form-label">Repetir Contraseña</label>
-              <input type="password" class="form-control" id="password2" name="password2" required minlength=8>
+              <input type="password" class="form-control" id="password2" name="password2" required minlength=8 maxlength=12>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
               </div>
               <div class="form-group text-start col-7">
                 <label for="dni" class="col-form-label">Numero</label>
-                <input type="text" class="form-control" id="dni" name="document_number" required>
+                <input type="text" class="form-control" id="dni" name="document_number" maxlength=8 minlength=8 required>
               </div>
             </div>
           </div>

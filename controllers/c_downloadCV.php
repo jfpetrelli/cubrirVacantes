@@ -1,6 +1,7 @@
 <?php
 
 require_once('../models/m_vacants.php');
+require_once('c_inactiveSession.php');
 
 session_start();
 

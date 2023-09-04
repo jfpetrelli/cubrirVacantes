@@ -10,8 +10,33 @@ if (isset($_SESSION['user_id'])){
 
 
 }
+if(isset($_SESSION['tiempo']) ) {
+
+  //Tiempo en segundos para dar vida a la sesión.
+  $inactivo = 300;//5min en este caso.
+
+  //Calculamos tiempo de vida inactivo.
+  $vida_session = time() - $_SESSION['tiempo'];
+
+      //Compraración para redirigir página, si la vida de sesión sea mayor a el tiempo insertado en inactivo.
+      if($vida_session > $inactivo)
+      {
+          //Removemos sesión.
+          session_unset();
+          //Destruimos sesión.
+          session_destroy();              
+          //Redirigimos pagina.
+          header('Location:../views/index.php');
+          exit();
+      } else {  // si no ha caducado la sesion, actualizamos
+          $_SESSION['tiempo'] = time();
+      }
 
 
+} else {
+  //Activamos sesion tiempo.
+  $_SESSION['tiempo'] = time();
+}
 
 ?>
 
@@ -55,9 +80,11 @@ if (isset($_SESSION['user_id'])){
          if($existe){
           ?>
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg alt="Person" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></a>
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></a>
           <div class="dropdown-menu  navbar-dark bg-primary" style = "right:1%; left:auto;">
-          <a class="nav-link" href="../controllers/c_userSession.php">Perfil</a>  
+          <a class="nav-link" href="../controllers/c_userSession.php"><?php 
+         echo $_SESSION['user_id'];
+          ?></a>  
             <div class="dropdown-divider"></div>
             <a class="nav-link" href="../controllers/c_userSession.php?signoff=1">Cerrar Session</a>
           </div>

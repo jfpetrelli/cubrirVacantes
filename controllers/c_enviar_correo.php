@@ -2,6 +2,7 @@
 
 require_once('../models/m_vacants.php');
 require_once('../models/m_users.php');
+require_once('c_inactiveSession.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;

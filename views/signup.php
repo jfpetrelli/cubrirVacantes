@@ -12,7 +12,7 @@
           <div class="col-6">
             <div class="form-group text-start">
               <label for="user_id" class="col-form-label">Usuario</label>
-              <input type="text" class="form-control" id="user_id" name="user_id" minlength=4 maxlength=8 required>
+              <input type="text" class="form-control" id="user_id" name="user_id" minlength=4 maxlength=16 required>
             </div>
           </div>
           <div class="col-6">

@@ -16,10 +16,10 @@
                 
                     <div class="modal-body">
                         <div class="form-group my-3">
-                          <input type="text" class="form-control" placeholder="Usuario" name="user_id" aria-label="Usuario" required>
+                          <input type="text" class="form-control" placeholder="Usuario" name="user_id" aria-label="Usuario" minlength=4 maxlength=16 required>
                         </div>
                         <div class="form-group my-3">
-                            <input type="password" class="form-control" placeholder="Contraseña" name="password" aria-label="Contraseña" required>
+                            <input type="password" class="form-control" placeholder="Contraseña" name="password" aria-label="Contraseña" minlength=8 maxlength=12 required>
                         </div>
                         <div class="form-group my-2 text-end">
                             <a class= "text-align-end" href="signup.php"><small>Registrarse</small></a>

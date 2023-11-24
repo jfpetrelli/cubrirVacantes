@@ -7,6 +7,13 @@
     
         if(!empty($_POST['place']) && !empty($_POST['career']) 
             && !empty($_POST['from_date']) && !empty($_POST['to_date'])){
+            
+            // Verifica si la cadena contiene la barra (\ o /) o la barra vertical (|)
+            if (strpos($_POST['place'], '\\') !== false || strpos($_POST['place'], '/') !== false || strpos($_POST['place'], '|') !== false) {
+                header('Location:../views/vacanterror.php');
+                exit();
+            } 
+
 
             try{
                 $vacant = new Vacants();  //Creo instancia de Vacante

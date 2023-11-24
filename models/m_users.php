@@ -99,7 +99,7 @@ class Users{
     public function allUsers(){
 
         $conn = $this->connection;
-        $sql = "SELECT user_id, surname,name, concat(document_type,' ', document_number) as document, date_of_birth as date, city, state,address, TRIM(concat(address, ' ',appart, ' ',floor)) as address FROM users";
+        $sql = "SELECT distinct user_id, surname,name, concat(document_type,' ', document_number) as document, date_of_birth as date, city, state,address, TRIM(concat(address, ' ',appart, ' ',floor)) as address FROM users";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
         $result = $stmt->get_result();

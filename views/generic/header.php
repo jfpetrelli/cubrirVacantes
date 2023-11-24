@@ -79,12 +79,13 @@ if(isset($_SESSION['tiempo']) ) {
         <?php 
          if($existe){
           ?>
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg alt="Person" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></a>
-          <div class="dropdown-menu  navbar-dark bg-primary" style = "right:1%; left:auto;">
-          <a class="nav-link" href="../controllers/c_userSession.php"><?php 
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg alt="Person" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill mb-1" viewBox="0 0 16 16">
+          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+          <?php 
          echo $_SESSION['user_id'];
-          ?></a>  
+          ?></a>
+          <div class="dropdown-menu  navbar-dark bg-primary" style = "right:1%; left:auto;">
+          <a class="nav-link" href="../controllers/c_userSession.php">Mi perfil</a>  
             <div class="dropdown-divider"></div>
             <a class="nav-link" href="../controllers/c_userSession.php?signoff=1">Cerrar Session</a>
           </div>

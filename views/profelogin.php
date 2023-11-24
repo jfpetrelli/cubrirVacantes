@@ -23,8 +23,8 @@ if($_SESSION['admin'] == 0){
   exit();
 }
 
-if($_SESSION['admin'] == 2){
-  header('Location:../views/profelogin.php');
+if($_SESSION['admin'] == 1){
+  header('Location:../views/adminlogin.php');
   exit();
 }
 
@@ -93,15 +93,8 @@ if(!empty($_GET['search'])){
           <a href="#profile" class="nav-link <?php if($selected == ''){ ?> active <?php }?>" data-bs-toggle="tab">Perfil</a>
         </li>
         <li class="nav-item">
-          <a href="#finalizadas" class="nav-link" data-bs-toggle="tab">Inscripciones finalizadas</a>
+          <a href="#puntajes" class="nav-link <?php if($selected != ''){ ?> active <?php }?>" data-bs-toggle="tab">Cargar puntajes</a>
         </li>
-        <li class="nav-item">
-          <a href="#cargarv" class="nav-link" data-bs-toggle="tab">Cargar vacante</a>
-        </li>
- <!--        <li class="nav-item">
-          <a href="#users" class="nav-link" data-bs-toggle="tab">Usuarios registrados</a>
-        </li>
--->
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade <?php if($selected == ''){ ?> show active <?php }?>" id="profile">
@@ -116,7 +109,7 @@ if(!empty($_GET['search'])){
                 <div class="col-6">
                   <div class="form-group text-start">
                     <label for="email" class="col-form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name = "email" value = "<?= $email ?>">
+                    <input type="email" class="form-control" id="email" disabled name = "email" value = "<?= $email ?>">
                   </div>
                 </div>
               </div>
@@ -184,11 +177,6 @@ if(!empty($_GET['search'])){
                   </div>
                 </div>
               </div>
-              <div class="row justify-content-end m-3">
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary" title="Cargar mail" name="uploadMail" value = "ok">Cargar Correo</button>
-                </div>
-              </div>
           </form>
         </div>
         <div class="tab-pane fade" id="finalizadas">
@@ -226,97 +214,81 @@ if(!empty($_GET['search'])){
             </tbody>
           </table>
         </div>
-        <div class="tab-pane fade" id="cargarv">
-          <form method="POST" action="../controllers/c_vacants.php">
-              <div class="row justify-content-center m-2">
+
+        <div class="tab-pane fade <?php if($selected != ''){ ?> show active <?php }?>" id="puntajes">
+          <form class=""   method = "GET">
+              <div class="row justify-content-start m-2">
                 <div class="col-6">
-                  <div class="form-group text-start">
-                    <label for="puesto" class="col-form-label">Puesto</label>
-                    <input type="text" class="form-control" id="puesto" name="place" required>
+                  <div class="form-group text-start"> 
+                    <label for="postulaciones" class="col-form-label">Vacante</label>
+                    <select class="form-select" name="vacant">
+                    <?php
+                    while($row = mysqli_fetch_array($resp2)){
+                      ?><option value = "<?= $row['id'] ?>"
+                      <?php if($selected == $row['id']){
+                                  ?> selected <?php } 
+                            ?>>
+                      <?=$row['place']?></option> <?php
+                    }
+
+                    ?>
+                    </select>
                   </div>
                 </div>
-                <div class="col-6">
-                  <div class="form-group text-start">
-                    <label for="carrera" class="col-form-label">Carrera</label>
-                    <select class="form-select" id="carrera" name="career" required>
-                        <option default>Ingeniería de Sistemas</option>
-                        <option>Ingeniería Química</option>
-                        <option>Ingeniería Eléctrica</option>
-                        <option>Ingeniería Mecánica</option>
-                      </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row justify-content-center m-2">
-                <div class="col-6">
-                  <div class="form-group text-start">
-                    <label for="f_ini" class="col-form-label">Fecha inicio inscripción</label>
-                    <input type="date" class="form-control" id="f_ini" value = "<?php echo date('Y-m-d'); ?>" name="from_date" required>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group text-start">
-                    <label for="f_fin" class="col-form-label">Fecha fin inscripción</label>
-                    <input type="date" class="form-control" id="f_ini" value = "<?php echo date('Y-m-d'); ?>" name="to_date" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row justify-content-center m-2">
-                <div class="col-12">
-                  <div class="form-group  text-start">
-                    <label for="descrip" class="form-label mt-4">Descripción</label>
-                    <textarea class="form-control" id="descrip" rows="3" name="detail"></textarea>
-                  </div>
-                </div>
-              </div>
-              <div class="row justify-content-end m-3">
-                <div class="col-12">
-                  <button title="Cargar vacante" type="submit" class="btn btn-primary" name="register" value = "ok">Cargar Vacante</button>
+                <div class="col-1 align-self-end">
+                  <button type="submit" class="btn btn-primary" title="Buscar" name="search" value = "ok">Buscar</button>
                 </div>
               </div>
           </form>
-        </div>
-
-        <div class="tab-pane fade" id="users">    
+          <form class="" action="../controllers/c_users_vacants.php" method = "GET">
+          <input type="hidden" name="vacant" value="<?=$selected?>">
                 <div class="row justify-content-start my-3">
                   <div class="col-12">
                     <table class="table align-middle">
                       <thead>
                         <tr class="table-primary">
                         <th scope="col">Usuario</th>
-                        <th scope="col">Apellido</th>
+                          <th scope="col">Fecha postulación</th>
+                          <th scope="col">Apellido</th>
                           <th scope="col">Nombre</th>
-                          <th scope="col">Documento</th>
-                          <th scope="col">Fecha Nacimiento</th>
-                          <th scope="col">Provincia</th>
-                          <th scope="col">Ciudad</th>
-                          <th scope="col">Domicilio</th>
+                          <th scope="col">Puntaje</th>
                         </tr>
                       </thead>
                       <tbody>
                       <?php
-                    while($row = mysqli_fetch_array($resp4)){
+                      if(!empty($_GET['search'])){
+                    while($row = mysqli_fetch_array($resp3)){
                       ?>
                       <tr class="table-secondary">
-                      <th scope="row"><?= $row['user_id']; ?>
-                      <th scope="row"><?= $row['surname']; ?>
-                      <th scope="row"><?= $row['name']; ?>
-                      <th scope="row"><?= $row['document']; ?>
+                      <th scope="row"><input type="hidden" name = "user_id[]" value =<?= $row['user_id']; ?>><?= $row['user_id']; ?>
                       <th scope="row"><?= $row['date']; ?>
-                      <th scope="row"><?= $row['state']; ?>
-                      <th scope="row"><?= $row['city']; ?>
-                      <th scope="row"><?= $row['address']; ?>
+                        <th scope="row"><?= $row['surname']; ?>
+                        <th scope="row"><?= $row['name']; ?>
+                        <td>
+                            <div class="row justify-content-center">
+                              <div class="col-4">
+                                <input class="form-control" type="number" name= "score[]" min="0" value= "<?= $row['score']; ?>">
+                              </div>
+                            </div>
+                          </td>
                       </tr>
                       <?php
+
                     }
+                  }
+
             ?>
                       </tbody>
                     </table>
                   </div>    
                 </div>
+              <div class="row justify-content-end m-3">
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary" title="Cargar" name="upload" value = "ok">Cargar</button>
+                </div>
+              </div>
+          </form>
         </div>
-
-      </div>
     </div>
   </div>
 </div>

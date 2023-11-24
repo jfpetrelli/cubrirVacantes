@@ -102,6 +102,9 @@
                     }if($admin == 0){
                         header('Location:../views/userlogin.php');
                         exit();
+                    }if($admin == 2){
+                        header('Location:../views/profelogin.php');
+                        exit();
                     }
                 }
                 

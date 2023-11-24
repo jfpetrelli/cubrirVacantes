@@ -16,24 +16,25 @@ class UsersVacants{
     }
 
     public function insert($user_id, $vacant, $cvName){
-
         try{
             $conn = $this->connection;
-            $sql = "INSERT INTO users_vacants (user, vacant, date, cvFile, score) VALUES (?, ?, current_date() , ?, 0) ";
+            $sql = "INSERT INTO users_vacants (user,cvFile, vacant, date, score) VALUES (?, ?, ?, current_date(), 0) ";
             $stmt = $conn->prepare($sql); 
-            $stmt->bind_param("sss"
+            $stmt->bind_param("ssi"
                                 , $user_id
-                                , $vacant
-                                , $cvName);
+                                , $cvName
+                                , $vacant);
             
             if($stmt->execute()){
                 return 'ok';
             }else{
-                return 'error';
+                echo 'Error: ' . $stmt->error;
+                //return 'error';
             }
         
         }catch (\Throwable $th) {
-            return 'error';
+            echo 'Error: ' . $th->getMessage();
+            //return 'error';
         }
 
     }

@@ -35,11 +35,11 @@ $userVacants = new UsersVacants();
             if(move_uploaded_file($cvTemp, "$path/$cvName")){
 
                 $resp = $userVacants->insert($user_id, $vacant, $cvName);
-
+               
                 if($resp == 'ok'){
                     header("Location:../views/cvok.php");
                     exit();
-                }else{
+                }if($resp == 'error'){
                     header("Location:../views/cverror.php");
                     exit();
                 }

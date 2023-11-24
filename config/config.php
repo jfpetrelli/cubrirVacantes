@@ -7,7 +7,7 @@ $dbpass = 'root';
 $dbname = 'cubrir_vacantes';
 
 //DATOS MAIL  (Reemplazar por mail origen)
-$user_mail = 'xxxxxxx@gmail.com';
-$pass_mail = 'xxxxxxx';
+$user_mail = 'xxxxxxxxxxx@xxxxxxx.com';
+$pass_mail = 'xxxxxxxxxxxxxxx';
 
 ?>

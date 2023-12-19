@@ -45,7 +45,7 @@ class UsersVacants{
         $conn = $this->connection;
         $sql = "SELECT count(*) as tot FROM users_vacants where user = ? and vacant = ? ";
         $stmt = $conn->prepare($sql); 
-        $stmt->bind_param("ss", $user_id, $password);
+        $stmt->bind_param("ss", $user_id, $vacant);
         $stmt->execute();
         $result = $stmt->get_result();
         
@@ -78,7 +78,7 @@ class UsersVacants{
         $conn = $this->connection;
         $sql = "SELECT u.user_id, uv.date, surname, name, uv.score FROM users_vacants uv
         inner join vacants v on uv.vacant = v.id
-        inner join users u on uv.user = u.user_id where v.end_vacant = 0 and uv.vacant = ? ";
+        inner join users u on uv.user = u.user_id where v.end_vacant = 0 and uv.vacant = ? order by uv.score desc";
         $stmt = $conn->prepare($sql); 
         $stmt->bind_param("s", $vacant);
         $stmt->execute();

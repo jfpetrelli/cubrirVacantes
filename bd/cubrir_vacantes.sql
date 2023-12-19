@@ -26,7 +26,7 @@ CREATE TABLE `users` (
   `user_id` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
-  `admin` bit(1) NOT NULL,
+  `admin` int NOT NULL DEFAULT '0',
   `surname` varchar(45) NOT NULL,
   `document_type` varchar(45) NOT NULL,
   `document_number` varchar(45) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `users` (
   `appart` varchar(45) DEFAULT NULL,
   `floor` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,10 +47,38 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','12345678','Admin',_binary '','Admin','DNI','10200300','1982-01-01','Rosario','Santa Fe','Oroño 2555','pruebatotti@gmail.com','3',NULL),('demo','12345678','Demo',_binary '\0','Demo','DNI','20300400','1990-01-01','Rosario','Santa Fe','Pellegrini 1323','demo@gmail.com','9','D'),('demo2','12345678','Demo2',_binary '\0','Demo2','DNI','25897452','2000-01-05','Capital','Buenos Aires','Velez Sarfield 5897','demo2@gmail.com','','');
+INSERT INTO `users` VALUES ('admin','12345678','Admin',1,'Admin','DNI','10200300','1982-01-01','Rosario','Santa Fe','Oroño 2555','jfpetrelli@gmail.com','3',NULL),('profe','12345678','profe',2,'profe','DNI','123345678','1992-05-07','Rosario','Santa Fe','Salta 123','profe@gmail.com',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `users_vacants`
+--
+
+DROP TABLE IF EXISTS `users_vacants`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users_vacants` (
+  `user` varchar(45) NOT NULL,
+  `vacant` int NOT NULL,
+  `date` date NOT NULL,
+  `cvFile` varchar(255) DEFAULT NULL,
+  `score` int NOT NULL,
+  PRIMARY KEY (`user`,`vacant`,`date`),
+  KEY `FK_user_users_vacants_idx` (`vacant`),
+  CONSTRAINT `FK_users_users_vacants` FOREIGN KEY (`user`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `FK_vacants_users_vacants` FOREIGN KEY (`vacant`) REFERENCES `vacants` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='	';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users_vacants`
+--
+
+LOCK TABLES `users_vacants` WRITE;
+/*!40000 ALTER TABLE `users_vacants` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users_vacants` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `vacants`
@@ -65,12 +93,12 @@ CREATE TABLE `vacants` (
   `career` varchar(45) NOT NULL,
   `from_date` date NOT NULL,
   `to_date` date NOT NULL,
-  `detail` varchar(100) DEFAULT NULL,
+  `detail` longtext,
   `path` varchar(100) NOT NULL,
   `end_vacant` bit(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,6 +109,14 @@ LOCK TABLES `vacants` WRITE;
 /*!40000 ALTER TABLE `vacants` DISABLE KEYS */;
 /*!40000 ALTER TABLE `vacants` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'cubrir_vacantes'
+--
+
+--
+-- Dumping routines for database 'cubrir_vacantes'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -91,35 +127,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-11 16:29:20
-
-
---
--- Table structure for table `users_vacants`
---
-
-DROP TABLE IF EXISTS `users_vacants`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users_vacants` (
-  `user` varchar(45) NOT NULL,
-  `vacant` int NOT NULL,
-  `date` date NOT NULL,
-  `cvFile` varchar(45) DEFAULT NULL,
-  `score` int NOT NULL,
-  PRIMARY KEY (`user`,`vacant`,`date`),
-  KEY `FK_user_users_vacants_idx` (`vacant`),
-  CONSTRAINT `FK_users_users_vacants` FOREIGN KEY (`user`) REFERENCES `users` (`user_id`),
-  CONSTRAINT `FK_vacants_users_vacants` FOREIGN KEY (`vacant`) REFERENCES `vacants` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='	';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users_vacants`
---
-
-LOCK TABLES `users_vacants` WRITE;
-/*!40000 ALTER TABLE `users_vacants` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users_vacants` ENABLE KEYS */;
-UNLOCK TABLES;
-
+-- Dump completed on 2023-12-19 12:08:00

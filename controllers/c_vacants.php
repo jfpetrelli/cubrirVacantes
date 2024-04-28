@@ -52,4 +52,19 @@
     
     }
 
+    if (!empty($_POST['uploadMeritos'])){
+
+        $vacants = new Vacants();
+        $resp4 = $vacants->uploadMeritos();
+        
+        if($resp4 == 'ok'){
+            header("Location:../views/meritook.php");
+            exit();
+        }else{
+           header("Location:../views/meritoloaderror.php");
+           exit();
+        }
+
+    }
+
 ?>

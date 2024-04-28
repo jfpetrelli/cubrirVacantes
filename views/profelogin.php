@@ -60,7 +60,7 @@ while($row = mysqli_fetch_array($resp)){
 //Creo instancia de la clase Vacants
 $vacants = new Vacants();
 $resp = $vacants->expirationVacants();  // Muestra las inscripciones finalizadas que ya pueden descargarse
-$resp2 = $vacants->expirationVacants(); // Muestra las inscripciones finalizadas en el select para cargar los meritos
+$resp2 = $vacants->expirationVacantsProfe(); // Muestra las inscripciones finalizadas en el select para cargar los meritos
 
 $resp4 = $users->allUsers(); // Muestra todos los usuarios
 

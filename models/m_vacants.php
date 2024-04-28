@@ -20,8 +20,8 @@ class Vacants{
 
         try{
             $conn = $this->connection;
-            $sql = " INSERT into vacants(place, career, from_date, to_date, detail, path, end_vacant) values
-            (?, ?, ?, ?, ?, ?, 0)";
+            $sql = " INSERT into vacants(place, career, from_date, to_date, detail, path, end_vacant, upload_meritos) values
+            (?, ?, ?, ?, ?, ?, 0,0)";
             $stmt = $conn->prepare($sql); 
             $stmt->bind_param("ssssss"
                                 , $place
@@ -53,7 +53,16 @@ class Vacants{
 
     public function expirationVacants(){
 
-        $sql = mysqli_query($this->connection, " SELECT id, from_date, to_date, place, career FROM vacants where to_date  < current_date() and end_vacant = 0 ");
+        $sql = mysqli_query($this->connection, " SELECT id, from_date, to_date, place, career FROM vacants where to_date  < current_date()");
+
+        return $sql;
+
+
+    }
+
+    public function expirationVacantsProfe(){
+
+        $sql = mysqli_query($this->connection, " SELECT id, from_date, to_date, place, career FROM vacants where to_date  < current_date() and end_vacant = 0");
 
         return $sql;
 
@@ -74,7 +83,7 @@ class Vacants{
 
     public function allVacantsEnd(){
 
-        $sql = mysqli_query($this->connection, " SELECT id, place, career FROM vacants where end_vacant = 1 ");
+        $sql = mysqli_query($this->connection, " SELECT id, place, career FROM vacants where upload_meritos = 1 ");
 
         return $sql;
 
@@ -90,6 +99,21 @@ class Vacants{
             $stmt->execute();
 
     }
+
+    public function uploadMeritos(){
+
+        try{
+
+
+        $sql = $this->connection->query(" UPDATE vacants SET upload_meritos = 1 where upload_meritos = 0 and end_vacant = 1");
+
+        return 'ok';
+        }catch (\Throwable $th) {
+            return 'error';
+        }
+
+    }
+
 
 }
 

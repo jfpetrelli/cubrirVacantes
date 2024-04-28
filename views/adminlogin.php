@@ -192,6 +192,7 @@ if(!empty($_GET['search'])){
           </form>
         </div>
         <div class="tab-pane fade" id="finalizadas">
+        <form action="../controllers/c_vacants.php" method = "POST">
           <table class="table align-middle">
             <thead>
               <tr class="table-primary">
@@ -225,6 +226,10 @@ if(!empty($_GET['search'])){
             ?>
             </tbody>
           </table>
+          <div class="col-12">
+                  <button type="submit" class="btn btn-primary" title="Cargar méritos" name="uploadMeritos" value = "ok">Cargar Méritos</button>
+                </div>
+          </form>
         </div>
         <div class="tab-pane fade" id="cargarv">
           <form method="POST" action="../controllers/c_vacants.php">

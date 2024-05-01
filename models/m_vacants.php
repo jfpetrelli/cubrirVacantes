@@ -53,7 +53,7 @@ class Vacants{
 
     public function expirationVacants(){
 
-        $sql = mysqli_query($this->connection, " SELECT id, from_date, to_date, place, career FROM vacants where to_date  < current_date()");
+        $sql = mysqli_query($this->connection, " SELECT id, from_date, to_date, place, career, IF(upload_meritos = 1, 'SI', 'NO') as upload_meritos FROM vacants where to_date  < current_date()");
 
         return $sql;
 

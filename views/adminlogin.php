@@ -98,10 +98,10 @@ if(!empty($_GET['search'])){
         <li class="nav-item">
           <a href="#cargarv" class="nav-link" data-bs-toggle="tab">Cargar vacante</a>
         </li>
- <!--        <li class="nav-item">
-          <a href="#users" class="nav-link" data-bs-toggle="tab">Usuarios registrados</a>
+        <li class="nav-item">
+          <a href="#users" class="nav-link" data-bs-toggle="tab">Usuarios</a>
         </li>
--->
+
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade <?php if($selected == ''){ ?> show active <?php }?>" id="profile">
@@ -201,6 +201,7 @@ if(!empty($_GET['search'])){
                 <th scope="col">Fecha Cierre </th>
                 <th scope="col">Carrera</th>
                 <th scope="col">Vacante</th>
+                <th scope="col">Meritos cargados?</th>
                 <th scope="col">CVs recibidos</th>
               </tr>
             </thead>
@@ -214,6 +215,7 @@ if(!empty($_GET['search'])){
                         <th scope="row"><?= $row['to_date']; ?>
                         <th scope="row"><?= $row['career']; ?>
                         <th scope="row"><?= $row['place']; ?>
+                        <th scope="row"><?= $row['upload_meritos']; ?>
                         <td>
                           <a class= "text-align-end d-block" href="../controllers/c_downloadCV.php?vacant=<?= $row['id']; ?>"><small>Descargar</small></a>
                           <a class= "text-align-end d-block" href="../controllers/c_enviar_correo.php?vacant=<?= $row['id']; ?>"><small>Enviar por correo</small></a>
@@ -289,6 +291,7 @@ if(!empty($_GET['search'])){
                       <thead>
                         <tr class="table-primary">
                         <th scope="col">Usuario</th>
+                        <th scope="col">Tipo de usuario</th>
                         <th scope="col">Apellido</th>
                           <th scope="col">Nombre</th>
                           <th scope="col">Documento</th>
@@ -304,6 +307,7 @@ if(!empty($_GET['search'])){
                       ?>
                       <tr class="table-secondary">
                       <th scope="row"><?= $row['user_id']; ?>
+                      <th scope="row"><?= $row['type']; ?>
                       <th scope="row"><?= $row['surname']; ?>
                       <th scope="row"><?= $row['name']; ?>
                       <th scope="row"><?= $row['document']; ?>

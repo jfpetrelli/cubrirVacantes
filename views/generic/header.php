@@ -52,7 +52,7 @@ if(isset($_SESSION['tiempo']) ) {
     <script src="./js/bootstrap.bundle.min.js"></script>
     <link rel="shortcut icon" href="./img/utn.ico" sizes="(min-width: 1420px) 1420px, 100vw"/>
     
-    <title>Cubrir Vacantes</title>
+    <title>UTN FRRO - Cubrir Vacantes</title>
     
 </head>
 <body class="pt-5 mt-5 mb-5 pb-3">
@@ -60,7 +60,7 @@ if(isset($_SESSION['tiempo']) ) {
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php" title="Pag. Principal">Cubrir Vacantes</a>
+    <a class="navbar-brand" href="index.php" title="Pag. Principal">UTN FRRO - Cubrir Vacantes</a>
     <div class="d-flex justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item">

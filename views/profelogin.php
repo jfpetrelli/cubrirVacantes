@@ -90,14 +90,14 @@ if(!empty($_GET['search'])){
     <div class="col-12 border bg-light m-2">
       <ul class="nav nav-tabs my-2" id="myTab">
         <li class="nav-item">
-          <a href="#profile" class="nav-link <?php if($selected == ''){ ?> active <?php }?>" data-bs-toggle="tab">Perfil</a>
+          <a href="#puntajes" class="nav-link active" data-bs-toggle="tab">Cargar puntajes</a>
         </li>
         <li class="nav-item">
-          <a href="#puntajes" class="nav-link <?php if($selected != ''){ ?> active <?php }?>" data-bs-toggle="tab">Cargar puntajes</a>
+          <a href="#profile" class="nav-link" data-bs-toggle="tab">Editar Perfil</a>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade <?php if($selected == ''){ ?> show active <?php }?>" id="profile">
+        <div class="tab-pane fade" id="profile">
           <form action="../controllers/c_users.php" method = "POST">
               <div class="row justify-content-center m-2">
                 <div class="col-6">
@@ -179,43 +179,8 @@ if(!empty($_GET['search'])){
               </div>
           </form>
         </div>
-        <div class="tab-pane fade" id="finalizadas">
-          <table class="table align-middle">
-            <thead>
-              <tr class="table-primary">
-                <th scope="col">ID</th>
-                <th scope="col">Fecha Inicio</th>
-                <th scope="col">Fecha Cierre </th>
-                <th scope="col">Carrera</th>
-                <th scope="col">Vacante</th>
-                <th scope="col">CVs recibidos</th>
-              </tr>
-            </thead>
-            <tbody>
-            <?php
-                    while($row = mysqli_fetch_array($resp)){
-                      ?>
-                      <tr class="table-secondary">
-                      <th scope="row"><?= $row['id']; ?>
-                        <th scope="row"><?= $row['from_date']; ?>
-                        <th scope="row"><?= $row['to_date']; ?>
-                        <th scope="row"><?= $row['career']; ?>
-                        <th scope="row"><?= $row['place']; ?>
-                        <td>
-                          <a class= "text-align-end d-block" href="../controllers/c_downloadCV.php?vacant=<?= $row['id']; ?>"><small>Descargar</small></a>
-                          <a class= "text-align-end d-block" href="../controllers/c_enviar_correo.php?vacant=<?= $row['id']; ?>"><small>Enviar por correo</small></a>
-                        </td>
-                      </tr>
-                      <?php
 
-                    }
-
-            ?>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="tab-pane fade <?php if($selected != ''){ ?> show active <?php }?>" id="puntajes">
+        <div class="tab-pane fade  show active " id="puntajes">
           <form class=""   method = "GET">
               <div class="row justify-content-start m-2">
                 <div class="col-6">

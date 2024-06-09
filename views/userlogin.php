@@ -65,18 +65,19 @@ $resp = $vacants->allVacants();
   <div class="row my-3 justify-content-center text-center">
     <div class="col-12 border bg-light m-2">
       <ul class="nav nav-tabs my-2" id="myTab">
+        
         <li class="nav-item">
-          <a href="#profile" class="nav-link active" data-bs-toggle="tab">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a href="#postulaciones" class="nav-link" data-bs-toggle="tab">Mis Postulaciones</a>
+          <a href="#postulaciones" class="nav-link active" data-bs-toggle="tab">Mis Postulaciones</a>
         </li>
         <li class="nav-item">
           <a href="#cv" class="nav-link" data-bs-toggle="tab">Vacantes</a>
         </li>
+        <li class="nav-item">
+          <a href="#profile" class="nav-link" data-bs-toggle="tab">Editar Perfil</a>
+        </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="profile">
+        <div class="tab-pane fade" id="profile">
         <form action="#">
             
               <div class="row justify-content-center m-2">
@@ -160,7 +161,7 @@ $resp = $vacants->allVacants();
             
           </form>
         </div>
-        <div class="tab-pane fade" id="postulaciones">
+        <div class="tab-pane fade show active" id="postulaciones">
           <table class="table">
             <thead>
               <tr class="table-primary">

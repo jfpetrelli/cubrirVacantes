@@ -89,11 +89,9 @@ if(!empty($_GET['search'])){
   <div class="row my-3 justify-content-center text-center">
     <div class="col-12 border bg-light m-2">
       <ul class="nav nav-tabs my-2" id="myTab">
+        
         <li class="nav-item">
-          <a href="#profile" class="nav-link <?php if($selected == ''){ ?> active <?php }?>" data-bs-toggle="tab">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a href="#finalizadas" class="nav-link" data-bs-toggle="tab">Inscripciones finalizadas</a>
+          <a href="#finalizadas" class="nav-link  <?php if($selected == ''){ ?> active <?php }?>" data-bs-toggle="tab">Inscripciones finalizadas</a>
         </li>
         <li class="nav-item">
           <a href="#cargarv" class="nav-link" data-bs-toggle="tab">Cargar vacante</a>
@@ -101,10 +99,12 @@ if(!empty($_GET['search'])){
         <li class="nav-item">
           <a href="#users" class="nav-link" data-bs-toggle="tab">Usuarios</a>
         </li>
-
+        <li class="nav-item">
+          <a href="#profile" class="nav-link" data-bs-toggle="tab">Editar Perfil</a>
+        </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane fade <?php if($selected == ''){ ?> show active <?php }?>" id="profile">
+        <div class="tab-pane fade" id="profile">
           <form action="../controllers/c_users.php" method = "POST">
               <div class="row justify-content-center m-2">
                 <div class="col-6">
@@ -191,7 +191,7 @@ if(!empty($_GET['search'])){
               </div>
           </form>
         </div>
-        <div class="tab-pane fade" id="finalizadas">
+        <div class="tab-pane fade <?php if($selected == ''){ ?> show active <?php }?>" id="finalizadas">
         <form action="../controllers/c_vacants.php" method = "POST">
           <table class="table align-middle">
             <thead>
@@ -201,7 +201,7 @@ if(!empty($_GET['search'])){
                 <th scope="col">Fecha Cierre </th>
                 <th scope="col">Carrera</th>
                 <th scope="col">Vacante</th>
-                <th scope="col">Meritos cargados?</th>
+                <th scope="col">Méritos publicados?</th>
                 <th scope="col">CVs recibidos</th>
               </tr>
             </thead>
@@ -229,7 +229,7 @@ if(!empty($_GET['search'])){
             </tbody>
           </table>
           <div class="col-12">
-                  <button type="submit" class="btn btn-primary" title="Cargar méritos" name="uploadMeritos" value = "ok">Cargar Méritos</button>
+                  <button type="submit" class="btn btn-primary" title="Subir méritos a la web" name="uploadMeritos" value = "ok">Subir méritos a la web</button>
                 </div>
           </form>
         </div>

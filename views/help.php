@@ -29,7 +29,7 @@ Si tienes problemas para restablecer tu contraseña o necesitas ayuda adicional,
         <div class="row justify-content-center">
             <div class="col-10 border bg-light m-2">
                 <div class="p-3 text-start">
-                    <h4>¿Cómo puedo subir mi currículum vitae (CV) a su sitio web?</h3>
+                    <h4>¿Cómo puedo subir mi currículum vitae (CV) al sitio web?</h3>
                     <p lang="zxx">
                     Subir tu CV a nuestro sitio web es fácil y rápido. Sigue estos sencillos pasos:
 

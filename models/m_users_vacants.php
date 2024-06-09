@@ -63,7 +63,7 @@ class UsersVacants{
     public function inscriptions($user_id){
 
         $conn = $this->connection;
-        $sql = "select from_date, to_date, place from users_vacants uv inner join vacants v on uv.vacant = v.id where user = ? ";
+        $sql = "select from_date, to_date, place, if(uv.score = 0, '', uv.score) as score from users_vacants uv inner join vacants v on uv.vacant = v.id where user = ? ";
         $stmt = $conn->prepare($sql); 
         $stmt->bind_param("s", $user_id);
         $stmt->execute();

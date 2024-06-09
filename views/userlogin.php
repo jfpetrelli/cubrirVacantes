@@ -168,6 +168,7 @@ $resp = $vacants->allVacants();
                 <th scope="col">Fecha Inscripcion</th>
                 <th scope="col">Fecha Cierre </th>
                 <th scope="col">Vacante</th>
+                <th scope="col">Puntaje</th>
               </tr>
             </thead>
             <tbody>
@@ -180,6 +181,7 @@ $resp = $vacants->allVacants();
                       <th scope="row"><?= $row['from_date'] ?></th>
                       <td><?= $row['to_date'] ?></td>
                       <td><?= $row['place'] ?></td>
+                      <td><?= $row['score'] ?></td>
                     </tr>
                     <?php
                     }
